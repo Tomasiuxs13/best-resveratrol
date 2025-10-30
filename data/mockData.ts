@@ -291,6 +291,7 @@ export const faqs: FAQItem[] = [
 export const blogPosts: BlogPost[] = [
   {
     id: 1,
+    slug: "resveratrol-anti-aging-science",
     title: "Resveratrol and Anti-Aging: What Does the Science Say?",
     author: "Dr. Sarah Mitchell",
     authorBio: "Dr. Sarah Mitchell is a biochemist specializing in longevity research with over 15 years of experience studying polyphenols and their effects on aging.",
@@ -368,6 +369,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 2,
+    slug: "maximize-resveratrol-absorption",
     title: "How to Maximize Resveratrol Absorption: Tips and Tricks",
     author: "Jessica Torres, MS",
     authorBio: "Jessica Torres is a nutrition scientist with a Master's degree in Nutritional Biochemistry and a focus on supplement bioavailability.",
@@ -518,6 +520,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 3,
+    slug: "resveratrol-vs-pterostilbene",
     title: "Resveratrol vs. Pterostilbene: Which Is Right for You?",
     author: "Dr. Michael Chen",
     authorBio: "Dr. Michael Chen is a pharmacologist and supplement researcher with expertise in polyphenol compounds and their therapeutic applications.",
@@ -680,6 +683,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 4,
+    slug: "natural-food-sources-resveratrol",
     title: "Top 5 Natural Food Sources High in Resveratrol",
     author: "Emily Rodriguez, RD",
     authorBio: "Emily Rodriguez is a registered dietitian specializing in functional nutrition and plant-based antioxidants.",
@@ -868,6 +872,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 5,
+    slug: "partiqlar-vs-toniiq-vs-double-wood",
     title: "PartiQlar vs Toniiq vs Double Wood: Which Resveratrol Supplement Wins?",
     author: "Dr. Sarah Mitchell",
     authorBio: "Dr. Sarah Mitchell is a biochemist specializing in longevity research with over 15 years of experience studying polyphenols and their effects on aging.",

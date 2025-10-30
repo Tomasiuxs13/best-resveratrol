@@ -3,9 +3,10 @@ import type { BlogPost } from '../../types';
 
 interface BlogPageProps {
   posts: BlogPost[];
+  onNavigate: (path: string) => void;
 }
 
-const BlogPage: React.FC<BlogPageProps> = ({ posts }) => {
+const BlogPage: React.FC<BlogPageProps> = ({ posts, onNavigate }) => {
   return (
     <div className="animate-fade-in">
       <div className="text-center mb-12">
@@ -49,70 +50,18 @@ const BlogPage: React.FC<BlogPageProps> = ({ posts }) => {
               {/* Read More Button */}
               <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                 <span className="text-sm text-gray-500">5 min read</span>
-                <a
-                  href={`#post-${post.id}`}
+                <button
+                  onClick={() => onNavigate(`/blog/${post.slug}`)}
                   className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
                 >
                   Read Article
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </article>
-        ))}
-      </div>
-
-      {/* Full Article Content Below */}
-      <div className="mt-20 space-y-16">
-        <div className="border-t-2 border-gray-200 pt-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Full Articles</h2>
-        </div>
-
-        {posts.map((post) => (
-          <section
-            key={`full-${post.id}`}
-            id={`post-${post.id}`}
-            className="bg-white p-8 md:p-12 rounded-xl shadow-lg scroll-mt-24"
-          >
-            {/* Article Header */}
-            <div className="border-l-4 border-blue-600 pl-6 mb-8">
-              <div className="text-sm text-gray-500 mb-2">
-                <span>{post.date}</span> • <span>By {post.author}</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{post.title}</h2>
-              {post.authorBio && (
-                <p className="text-sm text-gray-600 italic mt-2">{post.authorBio}</p>
-              )}
-            </div>
-
-            {/* Article Content */}
-            <div
-              className="prose prose-lg max-w-none text-gray-700 leading-relaxed
-                prose-headings:font-bold prose-headings:text-gray-900
-                prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
-                prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
-                prose-p:mb-4 prose-p:leading-relaxed
-                prose-ul:mb-4 prose-li:mb-2
-                prose-strong:text-gray-900 prose-strong:font-semibold
-                prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline"
-              dangerouslySetInnerHTML={{ __html: post.content || '' }}
-            />
-
-            {/* Back to Top */}
-            <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-              <a
-                href="#"
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                </svg>
-                Back to Top
-              </a>
-            </div>
-          </section>
         ))}
       </div>
     </div>

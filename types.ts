@@ -1,4 +1,4 @@
-export type Page = 'HOME' | 'INFO' | 'FAQ' | 'BLOG' | 'ABOUT' | 'GUIDES_LIST' | 'GUIDE_DETAIL' | 'PRODUCT_DETAIL';
+export type Page = 'HOME' | 'INFO' | 'FAQ' | 'BLOG' | 'BLOG_POST' | 'ABOUT' | 'GUIDES_LIST' | 'GUIDE_DETAIL' | 'PRODUCT_DETAIL';
 
 export interface Product {
   id: number;
@@ -25,6 +25,7 @@ export interface FAQItem {
 
 export interface BlogPost {
   id: number;
+  slug: string; // URL-friendly identifier for blog post pages
   title: string;
   author: string;
   authorBio: string;

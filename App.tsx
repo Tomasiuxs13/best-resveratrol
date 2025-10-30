@@ -40,6 +40,7 @@ import SEOHead from './components/SEOHead';
 import ResveratrolInfoPage from './components/pages/ResveratrolInfoPage';
 import FAQPage from './components/pages/FAQPage';
 import BlogPage from './components/pages/BlogPage';
+import BlogPostDetailPage from './components/pages/BlogPostDetailPage';
 import AboutPage from './components/pages/AboutPage';
 import GuidesListPage from './components/pages/GuidesListPage';
 import GuideDetailPage from './components/pages/GuideDetailPage';
@@ -53,6 +54,9 @@ const getPageFromPath = (path: string): { page: Page; slug?: string } => {
     if (path === '/blog') return { page: 'BLOG' };
     if (path === '/about') return { page: 'ABOUT' };
     if (path === '/guides') return { page: 'GUIDES_LIST' };
+
+    const blogMatch = path.match(/^\/blog\/(.+)$/);
+    if (blogMatch) return { page: 'BLOG_POST', slug: blogMatch[1] };
 
     const guideMatch = path.match(/^\/guides\/(.+)$/);
     if (guideMatch) return { page: 'GUIDE_DETAIL', slug: guideMatch[1] };
@@ -101,6 +105,10 @@ const App: React.FC = () => {
                 title: 'Resveratrol Research & Insights Blog',
                 description: 'Explore the latest research, tips, and insights on resveratrol, anti-aging, and wellness from our expert-written blog.'
             },
+            BLOG_POST: { // Default, will be overridden
+                title: 'Resveratrol Article',
+                description: 'Expert article on resveratrol, anti-aging, and supplement science.'
+            },
             ABOUT: {
                 title: 'About Us | Our Mission & Review Process',
                 description: 'Learn about our mission to provide clear, unbiased, and science-backed reviews of resveratrol supplements and our rigorous evaluation process.'
@@ -123,6 +131,16 @@ const App: React.FC = () => {
             const guide = guides.find(g => g.slug === currentRoute.slug);
             if (guide) {
                 return { title: `${guide.title} | Resveratrol Guides`, description: guide.summary };
+            }
+        }
+
+        if (currentRoute.page === 'BLOG_POST' && currentRoute.slug) {
+            const blogPost = blogPosts.find(p => p.slug === currentRoute.slug);
+            if (blogPost) {
+                return {
+                    title: `${blogPost.title} | Resveratrol Blog`,
+                    description: blogPost.summary
+                };
             }
         }
 
@@ -448,7 +466,10 @@ const App: React.FC = () => {
             case 'FAQ':
                 return <FAQPage faqs={faq} />;
             case 'BLOG':
-                return <BlogPage posts={blogPosts} />;
+                return <BlogPage posts={blogPosts} onNavigate={handleNavigate} />;
+            case 'BLOG_POST':
+                const blogPost = blogPosts.find(p => p.slug === currentRoute.slug);
+                return blogPost ? <BlogPostDetailPage post={blogPost} onNavigate={handleNavigate} /> : <div>Blog post not found.</div>;
              case 'ABOUT':
                 return aboutInfo ? <AboutPage info={aboutInfo} /> : null;
             case 'GUIDES_LIST':
