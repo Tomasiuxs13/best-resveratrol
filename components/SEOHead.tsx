@@ -18,7 +18,7 @@ const SEOHead: React.FC<SEOProps> = ({
   title,
   description,
   canonical,
-  ogImage = 'https://www.yoursite.com/og-default.jpg',
+  ogImage = 'https://bestresveratrol.com/og-image.png',
   ogType = 'website',
   articlePublishedTime,
   articleAuthor,
@@ -87,7 +87,7 @@ const SEOHead: React.FC<SEOProps> = ({
       updateMetaTag('og:url', canonical, true);
     }
 
-    updateMetaTag('og:site_name', 'Top 10 Resveratrol Supplements', true);
+    updateMetaTag('og:site_name', 'Best Resveratrol', true);
     updateMetaTag('og:locale', 'en_US', true);
 
     // Article-specific OG tags
