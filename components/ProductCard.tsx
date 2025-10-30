@@ -5,9 +5,10 @@ import { StarIcon, CheckCircleIcon, XCircleIcon, ShieldCheckIcon } from './IconC
 
 interface ProductCardProps {
   product: Product;
+  onNavigate?: (path: string) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate }) => {
   const renderStars = (rating: number) => {
     const numericRating = typeof rating === 'number' ? rating : 0;
     const stars = [];
@@ -100,9 +101,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 </div>
             )}
           </div>
-          <div className="mt-6">
-            <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
-              Check Price on Amazon
+          <div className="mt-6 space-y-3">
+            {onNavigate && (
+              <button
+                onClick={() => onNavigate(`/products/${product.slug}`)}
+                className="block w-full text-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105"
+              >
+                View Full Review →
+              </button>
+            )}
+            <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-4 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+              Buy Now - See #{product.rank} Pick
             </a>
           </div>
         </div>

@@ -2,26 +2,38 @@ import React, { useState, useEffect, useCallback } from 'react';
 // types
 import type { Product, FAQItem, BlogPost, ResveratrolInfo, Page, AboutInfo, GuidePost } from './types';
 
-// services
+// Static data
 import {
-  generateAffiliateContent,
-  generateFaqContent,
-  generateBlogContent,
-  generateResveratrolInfoContent,
-  generateAboutContent,
-  generateGuidesContent,
-} from './services/geminiService';
+  products as staticProducts,
+  faqs as staticFaqs,
+  blogPosts as staticBlogPosts,
+  resveratrolInfo as staticResveratrolInfo,
+  aboutInfo as staticAboutInfo,
+  guides as staticGuides
+} from './data/mockData';
 
 // Hooks
 import { usePageMetadata } from './hooks/usePageMetadata';
 
+// SEO Utils
+import {
+    generateOrganizationSchema,
+    generateWebSiteSchema,
+    generateProductBreadcrumb,
+    generateGuideBreadcrumb,
+    generatePageBreadcrumb,
+    getCanonicalUrl
+} from './utils/seoHelpers';
+
 // Main page components
 import Header from './components/Header';
+import Hero from './components/Hero';
 import ProductCard from './components/ProductCard';
 import ComparisonTable from './components/ComparisonTable';
 import Footer from './components/Footer';
 import TopPicks from './components/TopPicks';
 import SchemaInjector from './components/SchemaInjector';
+import SEOHead from './components/SEOHead';
 
 
 // New page components
@@ -31,6 +43,7 @@ import BlogPage from './components/pages/BlogPage';
 import AboutPage from './components/pages/AboutPage';
 import GuidesListPage from './components/pages/GuidesListPage';
 import GuideDetailPage from './components/pages/GuideDetailPage';
+import ProductDetailPage from './components/pages/ProductDetailPage';
 
 
 const getPageFromPath = (path: string): { page: Page; slug?: string } => {
@@ -40,10 +53,13 @@ const getPageFromPath = (path: string): { page: Page; slug?: string } => {
     if (path === '/blog') return { page: 'BLOG' };
     if (path === '/about') return { page: 'ABOUT' };
     if (path === '/guides') return { page: 'GUIDES_LIST' };
-    
+
     const guideMatch = path.match(/^\/guides\/(.+)$/);
     if (guideMatch) return { page: 'GUIDE_DETAIL', slug: guideMatch[1] };
-    
+
+    const productMatch = path.match(/^\/products\/(.+)$/);
+    if (productMatch) return { page: 'PRODUCT_DETAIL', slug: productMatch[1] };
+
     return { page: 'HOME' }; // Fallback to home
 };
 
@@ -60,6 +76,7 @@ const App: React.FC = () => {
     const [resveratrolInfo, setResveratrolInfo] = useState<ResveratrolInfo | null>(null);
     const [aboutInfo, setAboutInfo] = useState<AboutInfo | null>(null);
     const [schema, setSchema] = useState<object | null>(null);
+    const [breadcrumbSchema, setBreadcrumbSchema] = useState<object | null>(null);
 
     // Loading and error state
     const [loading, setLoading] = useState<boolean>(true);
@@ -69,8 +86,8 @@ const App: React.FC = () => {
     const getPageMetadata = () => {
         const baseMetadata: Record<Page, { title: string; description: string; }> = {
             HOME: {
-                title: 'Top 10 Best Resveratrol Supplements (2024 Review)',
-                description: "Discover the best resveratrol supplements of 2024. In-depth reviews, a comparison table, and a buyer's guide to help you boost your health and longevity."
+                title: 'Top 10 Best Resveratrol Supplements (2025 Review)',
+                description: "Discover the best resveratrol supplements of 2025. In-depth reviews, a comparison table, and a buyer's guide to help you boost your health and longevity."
             },
             INFO: {
                 title: 'What is Resveratrol? | A Scientific Deep Dive',
@@ -95,6 +112,10 @@ const App: React.FC = () => {
             GUIDE_DETAIL: { // Default, will be overridden
                 title: 'Resveratrol Guide',
                 description: 'An in-depth guide to understanding resveratrol supplements.'
+            },
+            PRODUCT_DETAIL: { // Default, will be overridden
+                title: 'Resveratrol Product Review',
+                description: 'Detailed review of a top-rated resveratrol supplement.'
             }
         };
 
@@ -104,68 +125,77 @@ const App: React.FC = () => {
                 return { title: `${guide.title} | Resveratrol Guides`, description: guide.summary };
             }
         }
+
+        if (currentRoute.page === 'PRODUCT_DETAIL' && currentRoute.slug) {
+            const product = products.find(p => p.slug === currentRoute.slug);
+            if (product) {
+                return {
+                    title: `${product.brand} ${product.name} Review | ${product.bestFor}`,
+                    description: product.summary
+                };
+            }
+        }
+
         return baseMetadata[currentRoute.page];
     };
     const { title, description } = getPageMetadata();
     usePageMetadata(title, description);
 
-    const fetchContentForPage = useCallback(async (route: { page: Page; slug?: string }) => {
+    const fetchContentForPage = useCallback((route: { page: Page; slug?: string }) => {
         setLoading(true);
         setError(null);
         window.scrollTo(0, 0);
-        try {
-            // Fetch guides for header dropdown if not already loaded.
-            if (guides.length === 0) {
-                const fetchedGuides = await generateGuidesContent();
-                setGuides(fetchedGuides);
-            }
 
-            switch (route.page) {
-                case 'HOME':
-                    if (products.length === 0) {
-                        const { products: fetchedProducts } = await generateAffiliateContent();
-                        setProducts(fetchedProducts);
-                    }
-                    break;
-                case 'INFO':
-                    if (!resveratrolInfo) {
-                        const info = await generateResveratrolInfoContent();
-                        setResveratrolInfo(info);
-                    }
-                    break;
-                case 'FAQ':
-                    if (faq.length === 0) {
-                        const faqs = await generateFaqContent();
-                        setFaq(faqs);
-                    }
-                    break;
-                case 'BLOG':
-                    if (blogPosts.length === 0) {
-                        const posts = await generateBlogContent();
-                        setBlogPosts(posts);
-                    }
-                    break;
-                case 'ABOUT':
-                    if (!aboutInfo) {
-                        const info = await generateAboutContent();
-                        setAboutInfo(info);
-                    }
-                    break;
-                // GUIDES_LIST and GUIDE_DETAIL cases are intentionally empty
-                // as guides are fetched globally above.
-                case 'GUIDES_LIST':
-                case 'GUIDE_DETAIL':
-                    break;
+        // Simulate a small delay for UX, then load static data
+        setTimeout(() => {
+            try {
+                // Load guides for header dropdown if not already loaded.
+                if (guides.length === 0) {
+                    setGuides(staticGuides);
+                }
+
+                switch (route.page) {
+                    case 'HOME':
+                        if (products.length === 0) {
+                            setProducts(staticProducts);
+                        }
+                        break;
+                    case 'INFO':
+                        if (!resveratrolInfo) {
+                            setResveratrolInfo(staticResveratrolInfo);
+                        }
+                        break;
+                    case 'FAQ':
+                        if (faq.length === 0) {
+                            setFaq(staticFaqs);
+                        }
+                        break;
+                    case 'BLOG':
+                        if (blogPosts.length === 0) {
+                            setBlogPosts(staticBlogPosts);
+                        }
+                        break;
+                    case 'ABOUT':
+                        if (!aboutInfo) {
+                            setAboutInfo(staticAboutInfo);
+                        }
+                        break;
+                    // GUIDES_LIST and GUIDE_DETAIL cases are intentionally empty
+                    // as guides are loaded globally above.
+                    case 'GUIDES_LIST':
+                    case 'GUIDE_DETAIL':
+                        break;
+                }
+            } catch (err) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                } else {
+                    setError('An unknown error occurred.');
+                }
+            } finally {
+                setLoading(false);
             }
-        } catch (err) {
-            if (err instanceof Error) {
-                setError(err.message);
-            } else {
-                setError('An unknown error occurred.');
-            }
-        } finally {
-            setLoading(false);
-        }
+        }, 300); // Small delay for smooth UX
     }, [products.length, guides.length, resveratrolInfo, faq.length, blogPosts.length, aboutInfo]);
 
     // Initial fetch and routing setup
@@ -197,7 +227,7 @@ const App: React.FC = () => {
                                 "@context": "https://schema.org",
                                 "@type": "ItemList",
                                 "name": "Top 10 Resveratrol Supplements",
-                                "description": "An expert-reviewed list of the top 10 resveratrol supplements for 2024.",
+                                "description": "An expert-reviewed list of the top 10 resveratrol supplements for 2025.",
                                 "itemListElement": products.map((product, index) => ({
                                     "@type": "ListItem",
                                     "position": index + 1,
@@ -272,6 +302,33 @@ const App: React.FC = () => {
                            }
                         }
                         return null;
+                    case 'PRODUCT_DETAIL':
+                        const product = products.find(p => p.slug === currentRoute.slug);
+                        if (product) {
+                            return {
+                                "@context": "https://schema.org",
+                                "@type": "Product",
+                                "name": `${product.brand} ${product.name}`,
+                                "image": product.image,
+                                "description": product.summary,
+                                "brand": { "@type": "Brand", "name": product.brand },
+                                "review": {
+                                    "@type": "Review",
+                                    "reviewRating": {
+                                        "@type": "Rating",
+                                        "ratingValue": product.rating,
+                                        "bestRating": "5"
+                                    },
+                                    "author": { "@type": "Organization", "name": siteName }
+                                },
+                                "offers": {
+                                    "@type": "Offer",
+                                    "url": product.affiliateLink,
+                                    "availability": "https://schema.org/InStock"
+                                }
+                            }
+                        }
+                        return null;
                     default:
                         return {
                             "@context": "https://schema.org",
@@ -288,6 +345,40 @@ const App: React.FC = () => {
         setSchema(generateSchema());
     }, [currentRoute, products, faq, blogPosts, resveratrolInfo, guides]);
 
+    // Generate breadcrumb schema based on current page
+    useEffect(() => {
+        const generateBreadcrumb = () => {
+            switch(currentRoute.page) {
+                case 'HOME':
+                    return null; // No breadcrumb on homepage
+                case 'PRODUCT_DETAIL':
+                    const product = products.find(p => p.slug === currentRoute.slug);
+                    if (product) {
+                        return generateProductBreadcrumb(`${product.brand} ${product.name}`, product.slug);
+                    }
+                    return null;
+                case 'GUIDE_DETAIL':
+                    const guide = guides.find(g => g.slug === currentRoute.slug);
+                    if (guide) {
+                        return generateGuideBreadcrumb(guide.title, guide.slug);
+                    }
+                    return null;
+                case 'INFO':
+                    return generatePageBreadcrumb('What is Resveratrol', getCanonicalUrl('/what-is-resveratrol'));
+                case 'FAQ':
+                    return generatePageBreadcrumb('FAQ', getCanonicalUrl('/faq'));
+                case 'BLOG':
+                    return generatePageBreadcrumb('Blog', getCanonicalUrl('/blog'));
+                case 'ABOUT':
+                    return generatePageBreadcrumb('About Us', getCanonicalUrl('/about'));
+                case 'GUIDES_LIST':
+                    return generatePageBreadcrumb('Guides', getCanonicalUrl('/guides'));
+                default:
+                    return null;
+            }
+        };
+        setBreadcrumbSchema(generateBreadcrumb());
+    }, [currentRoute, products, guides]);
 
     const handleNavigate = (path: string) => {
         const newRoute = getPageFromPath(path);
@@ -340,13 +431,16 @@ const App: React.FC = () => {
             case 'HOME':
                 return (
                   <>
-                    {products.length > 0 && <TopPicks products={products} />}
-                    {products.length > 0 && <ComparisonTable products={products} />}
-                    <section id="top-products" className="scroll-mt-24">
-                        {products.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </section>
+                    <Hero />
+                    <div className="container mx-auto px-4 py-8">
+                        {products.length > 0 && <TopPicks products={products} />}
+                        {products.length > 0 && <ComparisonTable products={products} />}
+                        <section id="top-products" className="scroll-mt-24">
+                            {products.map((product) => (
+                                <ProductCard key={product.id} product={product} onNavigate={handleNavigate} />
+                            ))}
+                        </section>
+                    </div>
                   </>
                 );
             case 'INFO':
@@ -362,6 +456,9 @@ const App: React.FC = () => {
             case 'GUIDE_DETAIL':
                 const guide = guides.find(g => g.slug === currentRoute.slug);
                 return guide ? <GuideDetailPage guide={guide} /> : <div>Guide not found.</div>;
+            case 'PRODUCT_DETAIL':
+                const product = products.find(p => p.slug === currentRoute.slug);
+                return product ? <ProductDetailPage product={product} onNavigate={handleNavigate} /> : <div>Product not found.</div>;
             default:
                 return <div>Page not found</div>;
         }
@@ -369,9 +466,28 @@ const App: React.FC = () => {
 
     return (
         <div className="font-sans text-gray-900">
+            {/* SEO Meta Tags */}
+            <SEOHead
+                title={title}
+                description={description}
+                canonical={getCanonicalUrl(window.location.pathname)}
+                ogType={currentRoute.page === 'PRODUCT_DETAIL' ? 'product' : currentRoute.page === 'BLOG' ? 'article' : 'website'}
+            />
+
+            {/* Organization Schema (Global) */}
+            <SchemaInjector schema={generateOrganizationSchema()} />
+
+            {/* WebSite Schema (Global) */}
+            <SchemaInjector schema={generateWebSiteSchema()} />
+
+            {/* Page-specific Schema */}
             {schema && <SchemaInjector schema={schema} />}
+
+            {/* Breadcrumb Schema */}
+            {breadcrumbSchema && <SchemaInjector schema={breadcrumbSchema} />}
+
             <Header onNavigate={handleNavigate} currentPage={currentRoute.page} guides={guides} />
-            <main className="container mx-auto px-4 py-8">
+            <main className={currentRoute.page === 'HOME' ? '' : 'container mx-auto px-4 py-8'}>
                 {renderPageContent()}
             </main>
             <Footer />

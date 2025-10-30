@@ -1,10 +1,11 @@
-export type Page = 'HOME' | 'INFO' | 'FAQ' | 'BLOG' | 'ABOUT' | 'GUIDES_LIST' | 'GUIDE_DETAIL';
+export type Page = 'HOME' | 'INFO' | 'FAQ' | 'BLOG' | 'ABOUT' | 'GUIDES_LIST' | 'GUIDE_DETAIL' | 'PRODUCT_DETAIL';
 
 export interface Product {
   id: number;
   rank: number;
   name: string;
   brand: string;
+  slug: string; // URL-friendly identifier for product pages
   image: string;
   summary: string;
   pros: string[];

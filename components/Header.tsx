@@ -54,10 +54,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides }) => {
         setIsGuidesOpen(false);
     }
 
-    const lastUpdatedDate = new Date().toLocaleDateString('en-US', {
-        year: 'numeric', month: 'long', day: 'numeric',
-    });
-
     const isGuidesPage = currentPage === 'GUIDES_LIST' || currentPage === 'GUIDE_DETAIL';
 
     return (
@@ -81,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides }) => {
                             </button>
                         ))}
                         {/* Guides Dropdown */}
-                        <div className="relative" onMouseEnter={() => setIsGuidesOpen(true)} onMouseLeave={() => setIsGuidesOpen(false)}>
+                        <div className="relative group" onMouseEnter={() => setIsGuidesOpen(true)} onMouseLeave={() => setIsGuidesOpen(false)}>
                             <button
                                 onClick={() => handleGuideNav('/guides')}
                                 className={`text-gray-600 hover:text-blue-600 transition-colors pb-1 border-b-2 font-medium flex items-center ${
@@ -92,16 +88,18 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides }) => {
                                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
                             {isGuidesOpen && guides.length > 0 && (
-                                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white rounded-lg shadow-xl py-2 z-50">
-                                    {guides.map(guide => (
-                                        <a
-                                            key={guide.slug}
-                                            onClick={() => handleGuideNav(`/guides/${guide.slug}`)}
-                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer"
-                                        >
-                                            {guide.title}
-                                        </a>
-                                    ))}
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+                                    <div className="w-64 bg-white rounded-lg shadow-xl py-2 border border-gray-200">
+                                        {guides.map(guide => (
+                                            <a
+                                                key={guide.slug}
+                                                onClick={() => handleGuideNav(`/guides/${guide.slug}`)}
+                                                className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 cursor-pointer transition-colors"
+                                            >
+                                                {guide.title}
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -153,22 +151,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides }) => {
                     </nav>
                 </div>
             </div>
-            {currentPage === 'HOME' && (
-                <div className="bg-gray-50 py-6 text-center border-t">
-                     <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight">
-                        Top 10 Resveratrol Supplements
-                    </h1>
-                    <p className="mt-3 text-lg md:text-xl text-gray-600">
-                        Unlock Your Longevity Potential: An Expert Review of 2024's Best.
-                    </p>
-                    <div className="mt-4 text-sm text-gray-500">
-                        <p>Last Updated: {lastUpdatedDate}</p>
-                        <p className="mt-1">
-                            <span className="font-semibold">Affiliate Disclosure:</span> We may earn a commission from qualifying purchases.
-                        </p>
-                    </div>
-                </div>
-            )}
         </header>
     );
 };
