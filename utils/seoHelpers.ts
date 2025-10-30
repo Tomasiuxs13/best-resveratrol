@@ -75,3 +75,11 @@ export const generatePageBreadcrumb = (pageName: string, pageUrl: string) => {
     { name: pageName, url: pageUrl }
   ]);
 };
+
+export const generateBlogPostBreadcrumb = (postTitle: string, postSlug: string) => {
+  return generateBreadcrumbSchema([
+    { name: "Home", url: "https://www.yoursite.com/" },
+    { name: "Blog", url: "https://www.yoursite.com/blog" },
+    { name: postTitle, url: `https://www.yoursite.com/blog/${postSlug}` }
+  ]);
+};

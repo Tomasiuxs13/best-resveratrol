@@ -21,6 +21,7 @@ import {
     generateWebSiteSchema,
     generateProductBreadcrumb,
     generateGuideBreadcrumb,
+    generateBlogPostBreadcrumb,
     generatePageBreadcrumb,
     getCanonicalUrl
 } from './utils/seoHelpers';
@@ -320,6 +321,29 @@ const App: React.FC = () => {
                            }
                         }
                         return null;
+                    case 'BLOG_POST':
+                        const blogPost = blogPosts.find(p => p.slug === currentRoute.slug);
+                        if (blogPost) {
+                            return {
+                                "@context": "https://schema.org",
+                                "@type": "BlogPosting",
+                                "headline": blogPost.title,
+                                "author": {
+                                    "@type": "Person",
+                                    "name": blogPost.author,
+                                    "description": blogPost.authorBio
+                                },
+                                "publisher": { "@type": "Organization", "name": siteName },
+                                "datePublished": blogPost.date,
+                                "description": blogPost.summary,
+                                "articleBody": (blogPost.content || '').replace(/<[^>]*>?/gm, ''),
+                                "mainEntityOfPage": {
+                                    "@type": "WebPage",
+                                    "@id": `${url}`
+                                }
+                            }
+                        }
+                        return null;
                     case 'PRODUCT_DETAIL':
                         const product = products.find(p => p.slug === currentRoute.slug);
                         if (product) {
@@ -381,6 +405,12 @@ const App: React.FC = () => {
                         return generateGuideBreadcrumb(guide.title, guide.slug);
                     }
                     return null;
+                case 'BLOG_POST':
+                    const blogPost = blogPosts.find(p => p.slug === currentRoute.slug);
+                    if (blogPost) {
+                        return generateBlogPostBreadcrumb(blogPost.title, blogPost.slug);
+                    }
+                    return null;
                 case 'INFO':
                     return generatePageBreadcrumb('What is Resveratrol', getCanonicalUrl('/what-is-resveratrol'));
                 case 'FAQ':
@@ -396,7 +426,7 @@ const App: React.FC = () => {
             }
         };
         setBreadcrumbSchema(generateBreadcrumb());
-    }, [currentRoute, products, guides]);
+    }, [currentRoute, products, guides, blogPosts]);
 
     const handleNavigate = (path: string) => {
         const newRoute = getPageFromPath(path);
