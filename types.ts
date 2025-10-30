@@ -1,4 +1,4 @@
-export type Page = 'HOME' | 'INFO' | 'FAQ' | 'BLOG' | 'BLOG_POST' | 'ABOUT' | 'GUIDES_LIST' | 'GUIDE_DETAIL' | 'PRODUCT_DETAIL';
+export type Page = 'HOME' | 'INFO' | 'FAQ' | 'BLOG' | 'BLOG_POST' | 'ABOUT' | 'GUIDES_LIST' | 'GUIDE_DETAIL' | 'PRODUCT_DETAIL' | 'PRIVACY_POLICY' | 'TERMS_OF_SERVICE' | 'DISCLAIMER' | 'AFFILIATE_DISCLOSURE' | 'NOT_FOUND';
 
 export interface Product {
   id: number;

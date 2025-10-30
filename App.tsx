@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 // types
-import type { Product, FAQItem, BlogPost, ResveratrolInfo, Page, AboutInfo, GuidePost } from './types';
+import type { Product, FAQItem, BlogPost, Page, AboutInfo, GuidePost } from './types';
 
 // Static data
 import {
   products as staticProducts,
   faqs as staticFaqs,
   blogPosts as staticBlogPosts,
-  resveratrolInfo as staticResveratrolInfo,
   aboutInfo as staticAboutInfo,
   guides as staticGuides
 } from './data/mockData';
@@ -38,7 +37,6 @@ import SEOHead from './components/SEOHead';
 
 
 // New page components
-import ResveratrolInfoPage from './components/pages/ResveratrolInfoPage';
 import FAQPage from './components/pages/FAQPage';
 import BlogPage from './components/pages/BlogPage';
 import BlogPostDetailPage from './components/pages/BlogPostDetailPage';
@@ -46,15 +44,26 @@ import AboutPage from './components/pages/AboutPage';
 import GuidesListPage from './components/pages/GuidesListPage';
 import GuideDetailPage from './components/pages/GuideDetailPage';
 import ProductDetailPage from './components/pages/ProductDetailPage';
+import PrivacyPolicyPage from './components/pages/PrivacyPolicyPage';
+import TermsOfServicePage from './components/pages/TermsOfServicePage';
+import DisclaimerPage from './components/pages/DisclaimerPage';
+import AffiliateDisclosurePage from './components/pages/AffiliateDisclosurePage';
+import NotFoundPage from './components/pages/NotFoundPage';
 
 
 const getPageFromPath = (path: string): { page: Page; slug?: string } => {
     if (path === '/') return { page: 'HOME' };
-    if (path === '/what-is-resveratrol') return { page: 'INFO' };
     if (path === '/faq') return { page: 'FAQ' };
     if (path === '/blog') return { page: 'BLOG' };
     if (path === '/about') return { page: 'ABOUT' };
     if (path === '/guides') return { page: 'GUIDES_LIST' };
+    if (path === '/privacy-policy') return { page: 'PRIVACY_POLICY' };
+    if (path === '/terms-of-service') return { page: 'TERMS_OF_SERVICE' };
+    if (path === '/disclaimer') return { page: 'DISCLAIMER' };
+    if (path === '/affiliate-disclosure') return { page: 'AFFILIATE_DISCLOSURE' };
+
+    // Redirect old "What is Resveratrol?" page to the guide
+    if (path === '/what-is-resveratrol') return { page: 'GUIDE_DETAIL', slug: 'what-is-resveratrol' };
 
     const blogMatch = path.match(/^\/blog\/(.+)$/);
     if (blogMatch) return { page: 'BLOG_POST', slug: blogMatch[1] };
@@ -78,7 +87,6 @@ const App: React.FC = () => {
     const [guides, setGuides] = useState<GuidePost[]>([]);
     const [faq, setFaq] = useState<FAQItem[]>([]);
     const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-    const [resveratrolInfo, setResveratrolInfo] = useState<ResveratrolInfo | null>(null);
     const [aboutInfo, setAboutInfo] = useState<AboutInfo | null>(null);
     const [schema, setSchema] = useState<object | null>(null);
     const [breadcrumbSchema, setBreadcrumbSchema] = useState<object | null>(null);
@@ -93,10 +101,6 @@ const App: React.FC = () => {
             HOME: {
                 title: 'Top 10 Best Resveratrol Supplements (2025 Review)',
                 description: "Discover the best resveratrol supplements of 2025. In-depth reviews, a comparison table, and a buyer's guide to help you boost your health and longevity."
-            },
-            INFO: {
-                title: 'What is Resveratrol? | A Scientific Deep Dive',
-                description: 'Learn everything about resveratrol, from its natural sources and health benefits to the latest scientific research. An authoritative guide.'
             },
             FAQ: {
                 title: 'Resveratrol FAQ | Answers to Common Questions',
@@ -125,6 +129,26 @@ const App: React.FC = () => {
             PRODUCT_DETAIL: { // Default, will be overridden
                 title: 'Resveratrol Product Review',
                 description: 'Detailed review of a top-rated resveratrol supplement.'
+            },
+            PRIVACY_POLICY: {
+                title: 'Privacy Policy | Best Resveratrol',
+                description: 'Our privacy policy explains how we collect, use, and protect your personal information when you visit our website.'
+            },
+            TERMS_OF_SERVICE: {
+                title: 'Terms of Service | Best Resveratrol',
+                description: 'Terms and conditions for using our website, including disclaimers, user obligations, and legal information.'
+            },
+            DISCLAIMER: {
+                title: 'Medical Disclaimer | Best Resveratrol',
+                description: 'Important medical and health disclaimers regarding the information provided on our supplement review website.'
+            },
+            AFFILIATE_DISCLOSURE: {
+                title: 'Affiliate Disclosure | Best Resveratrol',
+                description: 'Transparency about our affiliate relationships and how we earn commissions from product recommendations.'
+            },
+            NOT_FOUND: {
+                title: 'Page Not Found | Best Resveratrol',
+                description: 'The page you are looking for could not be found. Browse our resveratrol supplement reviews, guides, and blog.'
             }
         };
 
@@ -177,11 +201,6 @@ const App: React.FC = () => {
                         setProducts(staticProducts);
                     }
                     break;
-                case 'INFO':
-                    if (!resveratrolInfo) {
-                        setResveratrolInfo(staticResveratrolInfo);
-                    }
-                    break;
                 case 'FAQ':
                     if (faq.length === 0) {
                         setFaq(staticFaqs);
@@ -212,7 +231,7 @@ const App: React.FC = () => {
         } finally {
             setLoading(false);
         }
-    }, [products.length, guides.length, resveratrolInfo, faq.length, blogPosts.length, aboutInfo]);
+    }, [products.length, guides.length, faq.length, blogPosts.length, aboutInfo]);
 
     // Initial fetch and routing setup
     useEffect(() => {
@@ -293,18 +312,6 @@ const App: React.FC = () => {
                             };
                         }
                         return null;
-                     case 'INFO':
-                        if (resveratrolInfo) {
-                           return {
-                                "@context": "https://schema.org",
-                                "@type": "Article",
-                                "headline": resveratrolInfo.title,
-                                "author": { "@type": "Organization", "name": siteName },
-                                "publisher": { "@type": "Organization", "name": siteName },
-                                "description": (resveratrolInfo.introduction || '').replace(/<[^>]*>?/gm, ''),
-                           }
-                        }
-                        return null;
                     case 'GUIDE_DETAIL':
                         const guide = guides.find(g => g.slug === currentRoute.slug);
                         if (guide) {
@@ -313,8 +320,18 @@ const App: React.FC = () => {
                                 "@type": "Article",
                                 "headline": guide.title,
                                 "author": { "@type": "Organization", "name": siteName },
-                                "publisher": { "@type": "Organization", "name": siteName },
+                                "publisher": {
+                                    "@type": "Organization",
+                                    "name": siteName,
+                                    "logo": {
+                                        "@type": "ImageObject",
+                                        "url": "https://bestresveratrol.com/favicon.png"
+                                    }
+                                },
                                 "description": guide.summary,
+                                "image": "https://bestresveratrol.com/og-image.png",
+                                "datePublished": "2025-01-29",
+                                "dateModified": "2025-01-30"
                            }
                         }
                         return null;
@@ -330,9 +347,18 @@ const App: React.FC = () => {
                                     "name": blogPost.author,
                                     "description": blogPost.authorBio
                                 },
-                                "publisher": { "@type": "Organization", "name": siteName },
+                                "publisher": {
+                                    "@type": "Organization",
+                                    "name": siteName,
+                                    "logo": {
+                                        "@type": "ImageObject",
+                                        "url": "https://bestresveratrol.com/favicon.png"
+                                    }
+                                },
                                 "datePublished": blogPost.date,
+                                "dateModified": blogPost.date,
                                 "description": blogPost.summary,
+                                "image": "https://bestresveratrol.com/og-image.png",
                                 "articleBody": (blogPost.content || '').replace(/<[^>]*>?/gm, ''),
                                 "mainEntityOfPage": {
                                     "@type": "WebPage",
@@ -382,7 +408,7 @@ const App: React.FC = () => {
             }
         };
         setSchema(generateSchema());
-    }, [currentRoute, products, faq, blogPosts, resveratrolInfo, guides]);
+    }, [currentRoute, products, faq, blogPosts, guides]);
 
     // Generate breadcrumb schema based on current page
     useEffect(() => {
@@ -408,8 +434,6 @@ const App: React.FC = () => {
                         return generateBlogPostBreadcrumb(blogPost.title, blogPost.slug);
                     }
                     return null;
-                case 'INFO':
-                    return generatePageBreadcrumb('What is Resveratrol', getCanonicalUrl('/what-is-resveratrol'));
                 case 'FAQ':
                     return generatePageBreadcrumb('FAQ', getCanonicalUrl('/faq'));
                 case 'BLOG':
@@ -418,6 +442,14 @@ const App: React.FC = () => {
                     return generatePageBreadcrumb('About Us', getCanonicalUrl('/about'));
                 case 'GUIDES_LIST':
                     return generatePageBreadcrumb('Guides', getCanonicalUrl('/guides'));
+                case 'PRIVACY_POLICY':
+                    return generatePageBreadcrumb('Privacy Policy', getCanonicalUrl('/privacy-policy'));
+                case 'TERMS_OF_SERVICE':
+                    return generatePageBreadcrumb('Terms of Service', getCanonicalUrl('/terms-of-service'));
+                case 'DISCLAIMER':
+                    return generatePageBreadcrumb('Disclaimer', getCanonicalUrl('/disclaimer'));
+                case 'AFFILIATE_DISCLOSURE':
+                    return generatePageBreadcrumb('Affiliate Disclosure', getCanonicalUrl('/affiliate-disclosure'));
                 default:
                     return null;
             }
@@ -488,8 +520,6 @@ const App: React.FC = () => {
                     </div>
                   </>
                 );
-            case 'INFO':
-                return resveratrolInfo ? <ResveratrolInfoPage info={resveratrolInfo} /> : null;
             case 'FAQ':
                 return <FAQPage faqs={faq} />;
             case 'BLOG':
@@ -507,8 +537,16 @@ const App: React.FC = () => {
             case 'PRODUCT_DETAIL':
                 const product = products.find(p => p.slug === currentRoute.slug);
                 return product ? <ProductDetailPage product={product} onNavigate={handleNavigate} /> : <div>Product not found.</div>;
+            case 'PRIVACY_POLICY':
+                return <PrivacyPolicyPage />;
+            case 'TERMS_OF_SERVICE':
+                return <TermsOfServicePage />;
+            case 'DISCLAIMER':
+                return <DisclaimerPage />;
+            case 'AFFILIATE_DISCLOSURE':
+                return <AffiliateDisclosurePage />;
             default:
-                return <div>Page not found</div>;
+                return <NotFoundPage onNavigate={handleNavigate} />;
         }
     };
 
@@ -520,6 +558,7 @@ const App: React.FC = () => {
                 description={description}
                 canonical={getCanonicalUrl(window.location.pathname)}
                 ogType={currentRoute.page === 'PRODUCT_DETAIL' ? 'product' : currentRoute.page === 'BLOG' ? 'article' : 'website'}
+                noindex={currentRoute.page === 'NOT_FOUND'}
             />
 
             {/* Organization Schema (Global) */}
@@ -538,7 +577,7 @@ const App: React.FC = () => {
             <main className={currentRoute.page === 'HOME' ? '' : 'container mx-auto px-4 py-8'}>
                 {renderPageContent()}
             </main>
-            <Footer />
+            <Footer onNavigate={handleNavigate} />
         </div>
     );
 };
