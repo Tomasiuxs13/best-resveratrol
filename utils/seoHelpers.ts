@@ -4,15 +4,15 @@ export const generateOrganizationSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Top 10 Resveratrol",
-    "url": "https://www.yoursite.com",
-    "logo": "https://www.yoursite.com/logo.png",
+    "name": "Best Resveratrol",
+    "url": "https://bestresveratrol.com",
+    "logo": "https://bestresveratrol.com/logo.png",
     "description": "Expert reviews and comprehensive buying guides for the best resveratrol supplements on the market.",
     "sameAs": [
       // Add your social media profiles here when available
-      // "https://www.facebook.com/yourpage",
-      // "https://twitter.com/yourhandle",
-      // "https://www.instagram.com/yourhandle"
+      // "https://www.facebook.com/bestresveratrol",
+      // "https://twitter.com/bestresveratrol",
+      // "https://www.instagram.com/bestresveratrol"
     ]
   };
 };
@@ -21,14 +21,14 @@ export const generateWebSiteSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Top 10 Resveratrol Supplements",
-    "url": "https://www.yoursite.com",
+    "name": "Best Resveratrol - Top 10 Supplements 2025",
+    "url": "https://bestresveratrol.com",
     "description": "Expert reviews and buying guides for the best resveratrol supplements for anti-aging and longevity.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.yoursite.com/search?q={search_term_string}"
+        "urlTemplate": "https://bestresveratrol.com/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -49,37 +49,37 @@ export const generateBreadcrumbSchema = (items: Array<{name: string; url: string
 };
 
 export const getCanonicalUrl = (path: string): string => {
-  const baseUrl = "https://www.yoursite.com";
+  const baseUrl = "https://bestresveratrol.com";
   return `${baseUrl}${path}`;
 };
 
 export const generateProductBreadcrumb = (productName: string, productSlug: string) => {
   return generateBreadcrumbSchema([
-    { name: "Home", url: "https://www.yoursite.com/" },
-    { name: "Products", url: "https://www.yoursite.com/" },
-    { name: productName, url: `https://www.yoursite.com/products/${productSlug}` }
+    { name: "Home", url: "https://bestresveratrol.com/" },
+    { name: "Products", url: "https://bestresveratrol.com/" },
+    { name: productName, url: `https://bestresveratrol.com/products/${productSlug}` }
   ]);
 };
 
 export const generateGuideBreadcrumb = (guideTitle: string, guideSlug: string) => {
   return generateBreadcrumbSchema([
-    { name: "Home", url: "https://www.yoursite.com/" },
-    { name: "Guides", url: "https://www.yoursite.com/guides" },
-    { name: guideTitle, url: `https://www.yoursite.com/guides/${guideSlug}` }
+    { name: "Home", url: "https://bestresveratrol.com/" },
+    { name: "Guides", url: "https://bestresveratrol.com/guides" },
+    { name: guideTitle, url: `https://bestresveratrol.com/guides/${guideSlug}` }
   ]);
 };
 
 export const generatePageBreadcrumb = (pageName: string, pageUrl: string) => {
   return generateBreadcrumbSchema([
-    { name: "Home", url: "https://www.yoursite.com/" },
+    { name: "Home", url: "https://bestresveratrol.com/" },
     { name: pageName, url: pageUrl }
   ]);
 };
 
 export const generateBlogPostBreadcrumb = (postTitle: string, postSlug: string) => {
   return generateBreadcrumbSchema([
-    { name: "Home", url: "https://www.yoursite.com/" },
-    { name: "Blog", url: "https://www.yoursite.com/blog" },
-    { name: postTitle, url: `https://www.yoursite.com/blog/${postSlug}` }
+    { name: "Home", url: "https://bestresveratrol.com/" },
+    { name: "Blog", url: "https://bestresveratrol.com/blog" },
+    { name: postTitle, url: `https://bestresveratrol.com/blog/${postSlug}` }
   ]);
 };
