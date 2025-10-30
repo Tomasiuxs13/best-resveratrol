@@ -486,7 +486,7 @@ const App: React.FC = () => {
             {/* Breadcrumb Schema */}
             {breadcrumbSchema && <SchemaInjector schema={breadcrumbSchema} />}
 
-            <Header onNavigate={handleNavigate} currentPage={currentRoute.page} guides={guides} />
+            <Header onNavigate={handleNavigate} currentPage={currentRoute.page} guides={guides} products={products} />
             <main className={currentRoute.page === 'HOME' ? '' : 'container mx-auto px-4 py-8'}>
                 {renderPageContent()}
             </main>
