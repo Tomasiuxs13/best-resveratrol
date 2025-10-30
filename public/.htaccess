@@ -1,3 +1,9 @@
+# Set correct MIME types for JavaScript modules
+<IfModule mod_mime.c>
+  AddType text/javascript .js .mjs
+  AddType application/javascript .js .mjs
+</IfModule>
+
 # Enable Rewrite Engine
 <IfModule mod_rewrite.c>
   RewriteEngine On
