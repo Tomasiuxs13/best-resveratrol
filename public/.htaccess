@@ -7,6 +7,14 @@
   # RewriteCond %{HTTPS} off
   # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+  # IMPORTANT: Never redirect static assets
+  RewriteRule ^assets/ - [L]
+  RewriteRule ^favicon\. - [L]
+  RewriteRule ^og-image\. - [L]
+  RewriteRule ^apple-touch-icon\. - [L]
+  RewriteRule ^robots\.txt$ - [L]
+  RewriteRule ^sitemap\.xml$ - [L]
+
   # Handle React Router - redirect all requests to index.html
   # except for existing files and directories
   RewriteCond %{REQUEST_FILENAME} !-f
