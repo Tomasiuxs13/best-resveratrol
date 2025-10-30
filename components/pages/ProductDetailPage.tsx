@@ -28,8 +28,11 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, onNaviga
           <div className="flex items-center justify-center bg-gray-50 rounded-lg p-8">
             <img
               src={product.image}
-              alt={`${product.brand} ${product.name}`}
+              alt={`${product.brand} ${product.name} - ${product.potency} Trans-Resveratrol Supplement Bottle`}
               className="max-w-full h-auto rounded-lg shadow-md"
+              loading="eager"
+              width="400"
+              height="400"
             />
           </div>
 

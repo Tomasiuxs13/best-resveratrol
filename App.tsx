@@ -165,56 +165,53 @@ const App: React.FC = () => {
         setError(null);
         window.scrollTo(0, 0);
 
-        // Simulate a small delay for UX, then load static data
-        setTimeout(() => {
-            try {
-                // Load guides for header dropdown if not already loaded.
-                if (guides.length === 0) {
-                    setGuides(staticGuides);
-                }
-
-                switch (route.page) {
-                    case 'HOME':
-                        if (products.length === 0) {
-                            setProducts(staticProducts);
-                        }
-                        break;
-                    case 'INFO':
-                        if (!resveratrolInfo) {
-                            setResveratrolInfo(staticResveratrolInfo);
-                        }
-                        break;
-                    case 'FAQ':
-                        if (faq.length === 0) {
-                            setFaq(staticFaqs);
-                        }
-                        break;
-                    case 'BLOG':
-                        if (blogPosts.length === 0) {
-                            setBlogPosts(staticBlogPosts);
-                        }
-                        break;
-                    case 'ABOUT':
-                        if (!aboutInfo) {
-                            setAboutInfo(staticAboutInfo);
-                        }
-                        break;
-                    // GUIDES_LIST and GUIDE_DETAIL cases are intentionally empty
-                    // as guides are loaded globally above.
-                    case 'GUIDES_LIST':
-                    case 'GUIDE_DETAIL':
-                        break;
-                }
-            } catch (err) {
-                if (err instanceof Error) {
-                    setError(err.message);
-                } else {
-                    setError('An unknown error occurred.');
-                }
-            } finally {
-                setLoading(false);
+        try {
+            // Load guides for header dropdown if not already loaded.
+            if (guides.length === 0) {
+                setGuides(staticGuides);
             }
-        }, 300); // Small delay for smooth UX
+
+            switch (route.page) {
+                case 'HOME':
+                    if (products.length === 0) {
+                        setProducts(staticProducts);
+                    }
+                    break;
+                case 'INFO':
+                    if (!resveratrolInfo) {
+                        setResveratrolInfo(staticResveratrolInfo);
+                    }
+                    break;
+                case 'FAQ':
+                    if (faq.length === 0) {
+                        setFaq(staticFaqs);
+                    }
+                    break;
+                case 'BLOG':
+                    if (blogPosts.length === 0) {
+                        setBlogPosts(staticBlogPosts);
+                    }
+                    break;
+                case 'ABOUT':
+                    if (!aboutInfo) {
+                        setAboutInfo(staticAboutInfo);
+                    }
+                    break;
+                // GUIDES_LIST and GUIDE_DETAIL cases are intentionally empty
+                // as guides are loaded globally above.
+                case 'GUIDES_LIST':
+                case 'GUIDE_DETAIL':
+                    break;
+            }
+        } catch (err) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('An unknown error occurred.');
+            }
+        } finally {
+            setLoading(false);
+        }
     }, [products.length, guides.length, resveratrolInfo, faq.length, blogPosts.length, aboutInfo]);
 
     // Initial fetch and routing setup

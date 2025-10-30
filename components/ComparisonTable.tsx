@@ -32,7 +32,14 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ products }) => {
                   <td className="px-6 py-4 font-bold text-lg text-gray-900">{product.rank}</td>
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     <div className="flex items-center">
-                        <img src={product.image} alt={product.name} className="w-10 h-10 rounded-full object-contain mr-4"/>
+                        <img
+                            src={product.image}
+                            alt={`${product.brand} ${product.name}`}
+                            className="w-10 h-10 rounded-full object-contain mr-4"
+                            loading="lazy"
+                            width="40"
+                            height="40"
+                        />
                         <div>
                             <div>{product.brand}</div>
                             <div className="text-xs text-gray-500">{product.name}</div>

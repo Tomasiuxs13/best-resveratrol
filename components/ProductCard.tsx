@@ -52,7 +52,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate }) => {
           <div className={`relative w-24 h-24 flex items-center justify-center rounded-full text-3xl font-bold mb-4 ${badgeColor(product.rank)}`}>
             #{product.rank}
           </div>
-          <img className="h-48 w-full object-contain md:h-full md:w-48 rounded-lg" src={product.image} alt={`Image of ${product.name}`} />
+          <img
+            className="h-48 w-full object-contain md:h-full md:w-48 rounded-lg"
+            src={product.image}
+            alt={`${product.brand} ${product.name} - ${product.potency} Trans-Resveratrol Supplement`}
+            loading="lazy"
+            width="192"
+            height="192"
+          />
         </div>
         <div className="md:w-2/3 p-6 flex flex-col">
           <div className="flex-grow">

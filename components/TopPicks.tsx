@@ -7,7 +7,14 @@ const TopPickCard: React.FC<{ product: Product, label: string, badgeColor: strin
             <span className={`text-xs font-bold text-white ${badgeColor} px-5 py-2 rounded-full shadow-md uppercase tracking-wide`}>{label}</span>
         </div>
         <div className="mt-4">
-            <img src={product.image} alt={product.name} className="w-36 h-36 mx-auto my-4 object-contain drop-shadow-lg" />
+            <img
+                src={product.image}
+                alt={`${product.brand} ${product.name} - Top Rated Resveratrol Supplement`}
+                className="w-36 h-36 mx-auto my-4 object-contain drop-shadow-lg"
+                loading="lazy"
+                width="144"
+                height="144"
+            />
             <h3 className="font-bold text-gray-900 text-xl mb-1">{product.brand}</h3>
             <p className="text-sm text-gray-600 mb-4 min-h-[40px]">{product.name}</p>
         </div>
