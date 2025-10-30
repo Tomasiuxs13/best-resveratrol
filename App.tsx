@@ -197,6 +197,7 @@ const App: React.FC = () => {
 
             switch (route.page) {
                 case 'HOME':
+                case 'PRODUCT_DETAIL':
                     if (products.length === 0) {
                         setProducts(staticProducts);
                     }
@@ -207,6 +208,7 @@ const App: React.FC = () => {
                     }
                     break;
                 case 'BLOG':
+                case 'BLOG_POST':
                     if (blogPosts.length === 0) {
                         setBlogPosts(staticBlogPosts);
                     }
