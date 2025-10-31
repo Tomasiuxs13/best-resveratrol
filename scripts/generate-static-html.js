@@ -459,45 +459,132 @@ function section(title, inner) {
 }
 
 function generateHomePage() {
-  const topCards = products.slice(0, 3).map(p => `
-    <div class="bg-white rounded-xl shadow-lg p-6">
-      <div class="flex items-center justify-between mb-2">
-        <div class="text-sm font-semibold text-gray-700">#${p.rank} ${p.bestFor}</div>
-        <div class="text-sm text-gray-500">${p.rating}★</div>
+  const hero = `
+    <section class="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50 py-16 md:py-24">
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-10">
+          ${Array.from({ length: 8 }).map((_, i) => `<div class="absolute inset-0 rounded-full border-2 border-gray-400" style="transform: scale(${1 - i * 0.15})"></div>`).join('')}
+        </div>
       </div>
-      <img src="${p.image}" alt="${p.brand} ${p.name}" style="max-width:200px; height:auto;" />
-      <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2">${p.brand} - ${p.name}</h3>
-      <p class="text-gray-600 mb-4">${p.summary}</p>
-      <a href="/products/${p.slug}/" class="btn-primary">View Full Review →</a>
-    </div>
-  `).join('\n');
-
-  const content = `
-    <div class="container" style="padding: 2rem 1rem;">
-      ${section('Top Picks', `
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">${topCards}</div>
-      `)}
-      ${section('All Reviews', `
-        <div class="grid grid-cols-1 gap-6" id="top-products">
-          ${products.map(p => `
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <div class="flex items-center justify-between mb-2">
-                <div class="text-sm font-semibold text-gray-700">#${p.rank} ${p.bestFor}</div>
-                <div class="text-sm text-gray-500">${p.rating}★</div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="text-left">
+            <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-4 tracking-tight">
+              TOP 10<br/>RESVERATROL<br/>SUPPLEMENTS
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-xl">Unlock Your Longevity Potential: An Expert Review of 2025's Best.</p>
+            <a href="#product-1" class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-10 rounded-lg text-lg shadow-xl inline-block transition-all duration-300">See #1 Pick</a>
+            <div class="mt-8 text-sm text-gray-500 space-y-1">
+              <p class="font-semibold">Last Updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              <p><span class="font-semibold">Affiliate Disclosure:</span> We may earn a commission from qualifying purchases.</p>
+            </div>
+          </div>
+          <div class="relative flex justify-center md:justify-end">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-[400px] h-[400px] bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 rounded-[40px] rotate-12 opacity-30"></div>
+            </div>
+            <div class="relative bg-white rounded-3xl shadow-2xl p-8 max-w-md">
+              <div class="bg-gray-100 rounded-2xl p-6 mb-4 flex justify-center">
+                <img src="${products[0].image}" alt="${products[0].brand} ${products[0].name}" class="w-full h-64 object-contain" loading="eager" width="400" height="400" />
               </div>
-              <div class="flex items-start gap-4">
-                <img src="${p.image}" alt="${p.brand} ${p.name}" style="max-width:120px; height:auto;" />
-                <div>
-                  <h3 class="text-xl font-bold text-gray-900">${p.brand} - ${p.name}</h3>
-                  <p class="text-gray-600 mb-3">${p.summary}</p>
-                  <a href="/products/${p.slug}/" class="btn-primary">View Full Review →</a>
-                </div>
+              <div class="text-center mb-4">
+                <span class="inline-block bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full mb-2">≥99% Pure</span>
+                <h3 class="text-2xl font-bold text-gray-900">${products[0].brand} ${products[0].name}</h3>
+                <p class="text-sm text-gray-600">${products[0].potency}<br/>${products[0].servingSize}</p>
+              </div>
+              <a href="${products[0].affiliateLink}" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-4 rounded-2xl text-center transition-all duration-300 shadow-lg">Check Price</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>`;
+
+  const topPicks = `
+    <section id="top-picks" class="my-12 scroll-mt-24">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Our 2025 Top Picks</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        ${products.slice(0, 3).map((p, idx) => `
+          <div class="relative border-2 border-gray-200 rounded-2xl p-6 text-center shadow-xl bg-white">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="text-xs font-bold text-white ${idx===0?'bg-gradient-to-r from-amber-500 to-yellow-500':idx===1?'bg-gradient-to-r from-purple-500 to-pink-500':'bg-gradient-to-r from-blue-500 to-cyan-500'} px-5 py-2 rounded-full shadow-md uppercase tracking-wide">${p.bestFor}</span>
+            </div>
+            <div class="mt-4">
+              <img src="${p.image}" alt="${p.brand} ${p.name} - Top Rated Resveratrol Supplement" class="w-36 h-36 mx-auto my-4 object-contain" loading="lazy" width="144" height="144" />
+              <h3 class="font-bold text-gray-900 text-xl mb-1">${p.brand}</h3>
+              <p class="text-sm text-gray-600 mb-4 min-h-[40px]">${p.name}</p>
+            </div>
+            <a href="/products/${p.slug}/" class="mt-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-xl text-sm inline-block">View Full Review</a>
+          </div>
+        `).join('')}
+      </div>
+    </section>`;
+
+  const comparisonRows = products.slice(0, 5).map((p, i) => `
+    <tr class="border-b ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}">
+      <td class="px-6 py-4 font-bold text-lg text-gray-900">${p.rank}</td>
+      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+        <div class="flex items-center">
+          <img src="${p.image}" alt="${p.brand} ${p.name}" class="w-10 h-10 rounded-full object-contain mr-4" loading="lazy" width="40" height="40" />
+          <div>
+            <div>${p.brand}</div>
+            <div class="text-xs text-gray-500">${p.name}</div>
+          </div>
+        </div>
+      </th>
+      <td class="px-6 py-4"><div class="flex items-center justify-center">★ ${(p.rating || 0).toFixed(1)}</div></td>
+      <td class="px-6 py-4">${p.potency}</td>
+      <td class="px-6 py-4">${p.bestFor}</td>
+      <td class="px-6 py-4 text-right"><a href="/products/${p.slug}/" class="font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md px-4 py-2">View</a></td>
+    </tr>
+  `).join('');
+
+  const comparison = `
+    <section id="comparison-table" class="my-16">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Top Resveratrol Supplements at a Glance</h2>
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-gray-600">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+              <tr>
+                <th class="px-6 py-3">Rank</th>
+                <th class="px-6 py-3">Product</th>
+                <th class="px-6 py-3 text-center">Rating</th>
+                <th class="px-6 py-3">Potency</th>
+                <th class="px-6 py-3">Best For</th>
+                <th class="px-6 py-3"></th>
+              </tr>
+            </thead>
+            <tbody>${comparisonRows}</tbody>
+          </table>
+        </div>
+      </div>
+    </section>`;
+
+  const allReviews = `
+    <section id="top-products" class="scroll-mt-24">
+      ${products.map(p => `
+        <article id="product-${p.rank}" class="bg-white rounded-xl shadow-lg overflow-hidden my-8 border-2 border-transparent">
+          <div class="md:flex">
+            <div class="md:w-1/3 p-4 flex flex-col items-center justify-center bg-gray-50">
+              <div class="relative w-24 h-24 flex items-center justify-center rounded-full text-3xl font-bold mb-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-white">#${p.rank}</div>
+              <img src="${p.image}" alt="${p.brand} ${p.name} - ${p.potency}" loading="lazy" width="192" height="192" class="h-48 w-full object-contain md:h-full md:w-48 rounded-lg" />
+            </div>
+            <div class="md:w-2/3 p-6">
+              <div class="uppercase tracking-wide text-sm text-blue-600 font-semibold">${p.bestFor}</div>
+              <h3 class="block mt-1 text-2xl leading-tight font-bold text-black">${p.brand} - ${p.name}</h3>
+              <p class="mt-2 text-gray-600">${p.summary}</p>
+              <div class="mt-4 flex items-center"><span class="ml-2 text-gray-600 font-semibold">${(p.rating||0).toFixed(1)} / 5.0</span></div>
+              <div class="mt-6 space-y-3">
+                <a href="/products/${p.slug}/" class="block w-full text-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-4 rounded-lg">View Full Review →</a>
+                <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-4 rounded-lg">Buy Now - See #${p.rank} Pick</a>
               </div>
             </div>
-          `).join('')}
-        </div>
-      `)}
-    </div>`;
+          </div>
+        </article>
+      `).join('')}
+    </section>`;
+
+  const content = hero + '<div class="container mx-auto px-4 py-8">' + topPicks + comparison + allReviews + '</div>';
 
   return generateStaticHTML({
     title: 'Top 10 Best Resveratrol Supplements (2025 Review)',
