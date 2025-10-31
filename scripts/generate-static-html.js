@@ -525,9 +525,14 @@ function generateHomePage() {
               <div style="text-align:center; margin-bottom:1rem;">
                 <span class="badge badge-pink" style="margin-bottom:0.5rem;">≥99% Pure</span>
                 <h3 style="font-size:1.5rem; font-weight:800; color:#111827; margin:0 0 0.25rem;">${products[0].brand} ${products[0].name}</h3>
-                <p style="font-size:0.875rem; color:#4b5563; margin:0;">${products[0].potency}<br/>${products[0].servingSize}</p>
+                <p style="font-size:0.875rem; color:#4b5563; margin:0 0 .5rem;">${products[0].potency} • ${products[0].servingSize}</p>
+                <div style="font-size:.875rem; color:#6b7280; margin-bottom:.5rem;">Rating: ${(products[0].rating||0).toFixed(1)} / 5 • ${products[0].bestFor}</div>
+                ${ (products[0].certifications||[]).slice(0,3).map(c => `<span class=\"badge\" style=\"background:#e0f2fe;color:#075985;margin:.125rem;\">${c}</span>`).join('') }
               </div>
-              <a href="${products[0].affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:block; width:100%; text-align:center; border-radius:1rem;">Check Price</a>
+              <div style="display:flex; gap:.75rem;">
+                <a href="/products/${products[0].slug}/" class="btn btn-primary" style="flex:1; text-align:center; border-radius:1rem;">Full Review</a>
+                <a href="${products[0].affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="flex:1; text-align:center; border-radius:1rem;">Check Price</a>
+              </div>
             </div>
           </div>
         </div>
@@ -539,7 +544,7 @@ function generateHomePage() {
       <h2 style="font-size:1.875rem; font-weight:800; text-align:center; color:#1f2937; margin-bottom:2rem;">Our 2025 Top Picks</h2>
       <div class="grid-3">
         ${products.slice(0, 3).map((p, idx) => `
-          <div class="card" style="position:relative; border:2px solid #e5e7eb; padding:1.5rem; text-align:center;">
+            <div class="card" style="position:relative; border:2px solid #e5e7eb; padding:1.5rem; text-align:center;">
             <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%);">
               <span class="top-badge ${idx===0?'bg-gold':idx===1?'bg-violet':'bg-blue'}">${p.bestFor}</span>
             </div>
@@ -548,7 +553,10 @@ function generateHomePage() {
               <h3 style="font-weight:800; color:#111827; font-size:1.25rem; margin-bottom:0.25rem;">${p.brand}</h3>
               <p style="font-size:0.875rem; color:#4b5563; margin-bottom:1rem; min-height:40px;">${p.name}</p>
             </div>
-            <a href="/products/${p.slug}/" class="btn btn-primary" style="padding:.75rem 1.5rem;">View Full Review</a>
+            <div style="display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap;">
+              <a href="/products/${p.slug}/" class="btn btn-primary" style="padding:.75rem 1.5rem;">View Review</a>
+              <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="padding:.75rem 1.5rem; border-radius:.75rem;">Buy Now</a>
+            </div>
           </div>
         `).join('')}
       </div>
@@ -571,8 +579,9 @@ function generateHomePage() {
       </td>
       <td style="padding:.75rem 1rem; white-space:nowrap;">${p.potency}</td>
       <td style="padding:.75rem 1rem;">${p.bestFor}</td>
-      <td style="padding:.75rem 1rem; text-align:right;">
-        <a href="/products/${p.slug}/" class="btn btn-primary" style="padding:.5rem .9rem; border-radius:.5rem;">View</a>
+      <td style="padding:.75rem 1rem; text-align:right; display:flex; gap:.5rem; justify-content:flex-end;">
+        <a href="/products/${p.slug}/" class="btn btn-primary" style="padding:.5rem .9rem; border-radius:.5rem;">Review</a>
+        <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="padding:.5rem .9rem; border-radius:.5rem;">Buy</a>
       </td>
     </tr>
   `).join('');
