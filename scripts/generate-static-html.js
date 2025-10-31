@@ -105,6 +105,36 @@ function generateStaticHTML({ title, description, canonical, content, structured
         .desktop-nav { display: flex; }
         .mobile-only { display: none !important; }
       }
+
+      /* Static homepage theme */
+      .home-section { margin: 3rem 0; }
+      .hero { position: relative; overflow: hidden; background: linear-gradient(135deg,#f9fafb,#ffffff,#f9fafb); padding: 4rem 0; }
+      .hero-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+      @media (min-width: 768px) { .hero-grid { grid-template-columns: 1.2fr 1fr; } }
+      .hero-title { font-size: 3rem; font-weight: 900; color:#111827; line-height:1.1; letter-spacing:-0.02em; margin-bottom: 1rem; }
+      .hero-sub { font-size:1.125rem; color:#4b5563; margin-bottom:2rem; max-width:36rem; }
+      .btn { display:inline-block; font-weight:700; color:#fff; text-decoration:none; border-radius:0.75rem; transition: transform .2s ease, box-shadow .2s ease; }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 20px 25px -5px rgba(0,0,0,.1); }
+      .btn-primary { background: linear-gradient(90deg,#ec4899,#8b5cf6); padding:.9rem 1.5rem; }
+      .btn-warm { background: linear-gradient(90deg,#f97316,#ea580c); padding:1rem 2.5rem; }
+      .badge { display:inline-block; padding:.25rem .75rem; border-radius:9999px; font-weight:700; font-size:.75rem; }
+      .badge-pink { background:#fce7f3; color:#be185d; }
+      .card { background:#fff; border-radius:1rem; box-shadow:0 10px 15px -3px rgba(0,0,0,.1); }
+      .card-lg { border-radius:1.5rem; box-shadow:0 25px 50px -12px rgba(0,0,0,.25); }
+      .grid-3 { display:grid; grid-template-columns:1fr; gap:2rem; }
+      @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+      .top-badge { color:#fff; font-size:.75rem; font-weight:700; padding:.5rem 1.25rem; border-radius:9999px; box-shadow:0 10px 15px -3px rgba(0,0,0,.1); text-transform:uppercase; letter-spacing:.05em; }
+      .bg-gold { background:linear-gradient(90deg,#f59e0b,#fbbf24); }
+      .bg-violet { background:linear-gradient(90deg,#8b5cf6,#ec4899); }
+      .bg-blue { background:linear-gradient(90deg,#3b82f6,#06b6d4); }
+      .review-card { border:2px solid transparent; overflow:hidden; }
+      .review-col { display:flex; flex-wrap:wrap; }
+      .review-img { flex: 1 1 300px; max-width:360px; padding:1rem; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#f9fafb; }
+      .review-body { flex: 2 1 400px; padding:1.5rem; }
+      .table { width:100%; font-size:.875rem; text-align:left; color:#4b5563; border-collapse:collapse; }
+      .table th { padding:.75rem 1.5rem; text-transform:uppercase; font-size:.75rem; color:#374151; background:#f3f4f6; }
+      .table td, .table th { border-bottom:1px solid #e5e7eb; }
+      .table .zebra:nth-child(even) { background:#f9fafb; }
     </style>
     ${structuredData ? `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>` : ''}
 </head>
@@ -460,18 +490,18 @@ function section(title, inner) {
 
 function generateHomePage() {
   const hero = `
-    <section style="position:relative; overflow:hidden; background:linear-gradient(135deg,#f9fafb,#ffffff,#f9fafb); padding: 4rem 0;">
+    <section class="hero">
       <div style="position:absolute; inset:0; overflow:hidden; pointer-events:none;">
         <div style="position:absolute; left:0; top:50%; transform:translateY(-50%); width:600px; height:600px; opacity:0.1;">
           ${Array.from({ length: 8 }).map((_, i) => `<div style=\"position:absolute; inset:0; border-radius:9999px; border:2px solid #9ca3af; transform: scale(${1 - i * 0.15})\"></div>`).join('')}
         </div>
       </div>
-      <div class="container" style="max-width:1200px; margin:0 auto; padding:0 1rem; position:relative; z-index:1;">
-        <div style="display:grid; grid-template-columns: 1fr; gap:3rem; align-items:center;">
-          <div style="text-align:left;">
-            <h1 style="font-size:3rem; font-weight:900; color:#111827; line-height:1.1; margin:0 0 1rem; letter-spacing:-0.02em;">TOP 10<br/>RESVERATROL<br/>SUPPLEMENTS</h1>
-            <p style="font-size:1.125rem; color:#4b5563; margin:0 0 2rem; max-width:36rem;">Unlock Your Longevity Potential: An Expert Review of 2025's Best.</p>
-            <a href="#product-1" style="display:inline-block; background:linear-gradient(90deg,#f97316,#ea580c); color:white; font-weight:700; padding:1rem 2.5rem; border-radius:0.5rem; box-shadow:0 20px 25px -5px rgba(0,0,0,0.1); text-decoration:none;">See #1 Pick</a>
+      <div class="container" style="position:relative; z-index:1;">
+        <div class="hero-grid">
+          <div>
+            <h1 class="hero-title">TOP 10<br/>RESVERATROL<br/>SUPPLEMENTS</h1>
+            <p class="hero-sub">Unlock Your Longevity Potential: An Expert Review of 2025's Best.</p>
+            <a href="#product-1" class="btn btn-warm">See #1 Pick</a>
             <div style="margin-top:2rem; font-size:0.875rem; color:#6b7280;">
               <p style="margin:0 0 0.25rem; font-weight:600;">Last Updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
               <p style="margin:0;"><span style="font-weight:600;">Affiliate Disclosure:</span> We may earn a commission from qualifying purchases.</p>
@@ -481,16 +511,16 @@ function generateHomePage() {
             <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
               <div style="width:400px; height:400px; background:linear-gradient(135deg,#dbeafe,#ede9fe,#fce7f3); border-radius:40px; transform:rotate(12deg); opacity:0.3;"></div>
             </div>
-            <div style="position:relative; background:#ffffff; border-radius:1.5rem; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); padding:2rem; max-width:28rem; width:100%;">
+            <div class="card-lg" style="position:relative; padding:2rem; max-width:28rem; width:100%; background:#fff;">
               <div style="background:#f3f4f6; border-radius:1rem; padding:1.5rem; margin-bottom:1rem; display:flex; justify-content:center;">
                 <img src="${products[0].image}" alt="${products[0].brand} ${products[0].name}" style="width:100%; max-height:16rem; object-fit:contain;" loading="eager" width="400" height="400" />
               </div>
               <div style="text-align:center; margin-bottom:1rem;">
-                <span style="display:inline-block; background:#fce7f3; color:#be185d; font-size:0.75rem; font-weight:700; padding:0.25rem 0.75rem; border-radius:9999px; margin-bottom:0.5rem;">≥99% Pure</span>
+                <span class="badge badge-pink" style="margin-bottom:0.5rem;">≥99% Pure</span>
                 <h3 style="font-size:1.5rem; font-weight:800; color:#111827; margin:0 0 0.25rem;">${products[0].brand} ${products[0].name}</h3>
                 <p style="font-size:0.875rem; color:#4b5563; margin:0;">${products[0].potency}<br/>${products[0].servingSize}</p>
               </div>
-              <a href="${products[0].affiliateLink}" target="_blank" rel="noopener noreferrer" style="display:block; width:100%; text-align:center; background:linear-gradient(90deg,#ec4899,#8b5cf6); color:white; font-weight:700; padding:1rem; border-radius:1rem; text-decoration:none;">Check Price</a>
+              <a href="${products[0].affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:block; width:100%; text-align:center; border-radius:1rem;">Check Price</a>
             </div>
           </div>
         </div>
@@ -498,20 +528,20 @@ function generateHomePage() {
     </section>`;
 
   const topPicks = `
-    <section id="top-picks" style="margin:3rem 0; scroll-margin-top:6rem;">
+    <section id="top-picks" class="home-section" style="scroll-margin-top:6rem;">
       <h2 style="font-size:1.875rem; font-weight:800; text-align:center; color:#1f2937; margin-bottom:2rem;">Our 2025 Top Picks</h2>
-      <div style="display:grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap:2rem;">
+      <div class="grid-3">
         ${products.slice(0, 3).map((p, idx) => `
-          <div style="position:relative; border:2px solid #e5e7eb; border-radius:1rem; padding:1.5rem; text-align:center; background:#ffffff; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);">
+          <div class="card" style="position:relative; border:2px solid #e5e7eb; padding:1.5rem; text-align:center;">
             <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%);">
-              <span style="font-size:0.75rem; font-weight:700; color:#ffffff; padding:0.5rem 1.25rem; border-radius:9999px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1); background:${idx===0?'linear-gradient(90deg,#f59e0b,#fbbf24)':idx===1?'linear-gradient(90deg,#8b5cf6,#ec4899)':'linear-gradient(90deg,#3b82f6,#06b6d4)'}; text-transform:uppercase; letter-spacing:.05em;">${p.bestFor}</span>
+              <span class="top-badge ${idx===0?'bg-gold':idx===1?'bg-violet':'bg-blue'}">${p.bestFor}</span>
             </div>
             <div style="margin-top:1rem;">
               <img src="${p.image}" alt="${p.brand} ${p.name}" style="width:144px; height:144px; object-fit:contain; margin:1rem auto; display:block;" loading="lazy" width="144" height="144" />
               <h3 style="font-weight:800; color:#111827; font-size:1.25rem; margin-bottom:0.25rem;">${p.brand}</h3>
               <p style="font-size:0.875rem; color:#4b5563; margin-bottom:1rem; min-height:40px;">${p.name}</p>
             </div>
-            <a href="/products/${p.slug}/" style="display:inline-block; background:linear-gradient(90deg,#ec4899,#8b5cf6); color:white; font-weight:700; padding:0.75rem 1.5rem; border-radius:0.75rem; text-decoration:none;">View Full Review</a>
+            <a href="/products/${p.slug}/" class="btn btn-primary" style="padding:.75rem 1.5rem;">View Full Review</a>
           </div>
         `).join('')}
       </div>
@@ -537,25 +567,44 @@ function generateHomePage() {
   `).join('');
 
   const comparison = `
-    <section id=\"comparison-table\" style=\"margin:4rem 0;\">\n      <h2 style=\"font-size:1.875rem; font-weight:800; text-align:center; color:#1f2937; margin-bottom:2rem;\">Top Resveratrol Supplements at a Glance</h2>\n      <div style=\"background:#ffffff; border-radius:0.5rem; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1); overflow:hidden;\">\n        <div style=\"overflow-x:auto;\">\n          <table style=\"width:100%; font-size:0.875rem; text-align:left; color:#4b5563; border-collapse:collapse;\">\n            <thead style=\"background:#f3f4f6; color:#374151; text-transform:uppercase; font-size:0.75rem;\">\n              <tr>\n                <th style=\"padding:0.75rem 1.5rem;\">Rank</th>\n                <th style=\"padding:0.75rem 1.5rem;\">Product</th>\n                <th style=\"padding:0.75rem 1.5rem; text-align:center;\">Rating</th>\n                <th style=\"padding:0.75rem 1.5rem;\">Potency</th>\n                <th style=\"padding:0.75rem 1.5rem;\">Best For</th>\n                <th style=\"padding:0.75rem 1.5rem;\"></th>\n              </tr>\n            </thead>\n            <tbody>${comparisonRows}</tbody>\n          </table>\n        </div>\n      </div>\n    </section>`;
+    <section id="comparison-table" class="home-section">
+      <h2 style="font-size:1.875rem; font-weight:800; text-align:center; color:#1f2937; margin-bottom:2rem;">Top Resveratrol Supplements at a Glance</h2>
+      <div class="card" style="overflow:hidden;">
+        <div style="overflow-x:auto;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Product</th>
+                <th style="text-align:center;">Rating</th>
+                <th>Potency</th>
+                <th>Best For</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>${comparisonRows}</tbody>
+          </table>
+        </div>
+      </div>
+    </section>`;
 
   const allReviews = `
     <section id="top-products" style="scroll-margin-top:6rem;">
       ${products.map(p => `
-        <article id="product-${p.rank}" style="background:#ffffff; border-radius:0.75rem; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1); overflow:hidden; margin:2rem 0; border:2px solid transparent;">
-          <div style="display:flex; flex-wrap:wrap;">
-            <div style="flex: 1 1 300px; max-width:360px; padding:1rem; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#f9fafb;">
+        <article id="product-${p.rank}" class="card review-card" style="margin:2rem 0;">
+          <div class="review-col">
+            <div class="review-img">
               <div style="position:relative; width:96px; height:96px; display:flex; align-items:center; justify-content:center; border-radius:9999px; font-size:1.875rem; font-weight:700; margin-bottom:1rem; background:linear-gradient(90deg,#f59e0b,#fbbf24); color:#ffffff;">#${p.rank}</div>
               <img src="${p.image}" alt="${p.brand} ${p.name} - ${p.potency}" loading="lazy" width="192" height="192" style="height:12rem; width:100%; object-fit:contain; border-radius:0.5rem;" />
             </div>
-            <div style="flex: 2 1 400px; padding:1.5rem;">
+            <div class="review-body">
               <div style="text-transform:uppercase; letter-spacing:.05em; font-size:0.875rem; color:#2563eb; font-weight:600;">${p.bestFor}</div>
               <h3 style="margin-top:0.25rem; font-size:1.5rem; line-height:2rem; font-weight:800; color:#111827;">${p.brand} - ${p.name}</h3>
               <p style="margin-top:0.5rem; color:#4b5563;">${p.summary}</p>
               <div style="margin-top:1rem; display:flex; align-items:center;"><span style="margin-left:0.5rem; color:#4b5563; font-weight:600;">${(p.rating||0).toFixed(1)} / 5.0</span></div>
               <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
-                <a href="/products/${p.slug}/" style="display:block; width:100%; text-align:center; background:linear-gradient(90deg,#7c3aed,#ec4899); color:white; font-weight:700; padding:0.75rem 1rem; border-radius:0.5rem; text-decoration:none;">View Full Review →</a>
-                <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" style="display:block; width:100%; text-align:center; background:linear-gradient(90deg,#f97316,#ea580c); color:white; font-weight:700; padding:1rem; border-radius:0.5rem; text-decoration:none;">Buy Now - See #${p.rank} Pick</a>
+                <a href="/products/${p.slug}/" class="btn btn-primary" style="display:block; width:100%; text-align:center;">View Full Review →</a>
+                <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="display:block; width:100%; text-align:center; border-radius:.5rem;">Buy Now - See #${p.rank} Pick</a>
               </div>
             </div>
           </div>
@@ -563,7 +612,7 @@ function generateHomePage() {
       `).join('')}
     </section>`;
 
-  const content = hero + '<div class="container" style="max-width:1200px; margin:0 auto; padding: 2rem 1rem;">' + topPicks + comparison + allReviews + '</div>';
+  const content = hero + '<div class="container" style="padding: 2rem 1rem;">' + topPicks + comparison + allReviews + '</div>';
 
   return generateStaticHTML({
     title: 'Top 10 Best Resveratrol Supplements (2025 Review)',
