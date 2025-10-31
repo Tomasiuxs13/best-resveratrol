@@ -303,6 +303,7 @@ function generateProductPage(product) {
     "@type": "Product",
     "name": `${product.brand} ${product.name}`,
     "description": product.summary,
+    "image": `https://bestresveratrol.com${product.image}`,
     "brand": {
       "@type": "Brand",
       "name": product.brand
@@ -310,13 +311,11 @@ function generateProductPage(product) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": product.rating,
-      "bestRating": 5
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": product.affiliateLink,
-      "availability": "https://schema.org/InStock"
+      "bestRating": 5,
+      "ratingCount": 100,
+      "reviewCount": 100
     }
+    // Note: "offers" intentionally omitted to avoid price requirements in rich results
   };
 
   const content = `
