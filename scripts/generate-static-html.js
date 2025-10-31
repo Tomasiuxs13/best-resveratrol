@@ -529,10 +529,7 @@ function generateHomePage() {
                 <div style="font-size:.875rem; color:#6b7280; margin-bottom:.5rem;">Rating: ${(products[0].rating||0).toFixed(1)} / 5 • ${products[0].bestFor}</div>
                 ${ (products[0].certifications||[]).slice(0,3).map(c => `<span class=\"badge\" style=\"background:#e0f2fe;color:#075985;margin:.125rem;\">${c}</span>`).join('') }
               </div>
-              <div style="display:flex; gap:.75rem;">
-                <a href="/products/${products[0].slug}/" class="btn btn-primary" style="flex:1; text-align:center; border-radius:1rem;">Full Review</a>
-                <a href="${products[0].affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="flex:1; text-align:center; border-radius:1rem;">Check Price</a>
-              </div>
+              <a href="${products[0].affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="display:block; width:100%; text-align:center; border-radius:1rem; margin-top:.5rem;">Check Now</a>
             </div>
           </div>
         </div>
@@ -553,10 +550,7 @@ function generateHomePage() {
               <h3 style="font-weight:800; color:#111827; font-size:1.25rem; margin-bottom:0.25rem;">${p.brand}</h3>
               <p style="font-size:0.875rem; color:#4b5563; margin-bottom:1rem; min-height:40px;">${p.name}</p>
             </div>
-            <div style="display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap;">
-              <a href="/products/${p.slug}/" class="btn btn-primary" style="padding:.75rem 1.5rem;">View Review</a>
-              <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="padding:.75rem 1.5rem; border-radius:.75rem;">Buy Now</a>
-            </div>
+            <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="padding:.75rem 1.5rem; border-radius:.75rem;">Buy Now</a>
           </div>
         `).join('')}
       </div>
@@ -621,10 +615,24 @@ function generateHomePage() {
               <div style="text-transform:uppercase; letter-spacing:.05em; font-size:0.875rem; color:#2563eb; font-weight:600;">${p.bestFor}</div>
               <h3 style="margin-top:0.25rem; font-size:1.5rem; line-height:2rem; font-weight:800; color:#111827;">${p.brand} - ${p.name}</h3>
               <p style="margin-top:0.5rem; color:#4b5563;">${p.summary}</p>
+              <div style="display:grid; grid-template-columns:1fr; gap:1rem; margin-top:1rem;">
+                <div>
+                  <div style="font-weight:700; color:#16a34a; margin-bottom:.25rem;">Pros</div>
+                  <ul style="list-style:none; padding:0; margin:0;">
+                    ${(p.pros||[]).slice(0,3).map(pr => `<li style=\"display:flex; align-items:flex-start; gap:.5rem; color:#374151;\"><span style=\"color:#16a34a; font-weight:700;\">+</span><span>${pr}</span></li>`).join('')}
+                  </ul>
+                </div>
+                <div>
+                  <div style="font-weight:700; color:#dc2626; margin-bottom:.25rem;">Cons</div>
+                  <ul style="list-style:none; padding:0; margin:0;">
+                    ${(p.cons||[]).slice(0,2).map(co => `<li style=\"display:flex; align-items:flex-start; gap:.5rem; color:#374151;\"><span style=\"color:#dc2626; font-weight:700;\">-</span><span>${co}</span></li>`).join('')}
+                  </ul>
+                </div>
+              </div>
               <div style="margin-top:1rem; display:flex; align-items:center;"><span style="margin-left:0.5rem; color:#4b5563; font-weight:600;">${(p.rating||0).toFixed(1)} / 5.0</span></div>
               <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
                 <a href="/products/${p.slug}/" class="btn btn-primary" style="display:block; width:100%; text-align:center;">View Full Review →</a>
-                <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="display:block; width:100%; text-align:center; border-radius:.5rem;">Buy Now - See #${p.rank} Pick</a>
+                <a href="${p.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-warm" style="display:block; width:100%; text-align:center; border-radius:.5rem;">Buy Now</a>
               </div>
             </div>
           </div>
