@@ -22,12 +22,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides, produc
     const [isReviewsOpen, setIsReviewsOpen] = useState(false);
 
     const mainNavLinks: { name: string; page: Page; anchor?: string }[] = [
-        { name: 'What is Resveratrol?', page: 'INFO' },
-        { name: 'Reviews', page: 'HOME', anchor: '#top-products' },
-        { name: 'Compare', page: 'HOME', anchor: '#comparison-table' },
         { name: 'FAQ', page: 'FAQ' },
         { name: 'Blog', page: 'BLOG' },
-        { name: 'About Us', page: 'ABOUT' },
     ];
 
     const handleNavClick = (page: Page, anchor?: string) => {
@@ -73,17 +69,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides, produc
                         Top 10 Resveratrol
                     </button>
                     <nav className="hidden md:flex space-x-6 items-center">
-                        {/* What is Resveratrol? */}
-                        <button
-                            onClick={() => handleNavClick('INFO')}
-                            className={`text-gray-600 hover:text-blue-600 transition-colors pb-1 border-b-2 font-medium ${
-                                currentPage === 'INFO'
-                                ? 'border-blue-600 text-blue-600' : 'border-transparent'
-                            }`}
-                        >
-                            What is Resveratrol?
-                        </button>
-
                         {/* Reviews Dropdown */}
                         <div className="relative group" onMouseEnter={() => setIsReviewsOpen(true)} onMouseLeave={() => setIsReviewsOpen(false)}>
                             <button
@@ -107,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides, produc
                                         {products.map(product => (
                                             <a
                                                 key={product.slug}
-                                                onClick={() => handleProductNav(`/products/${product.slug}`)}
+                                                onClick={() => handleProductNav(`/products/${product.slug}/`)}
                                                 className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 cursor-pointer transition-colors"
                                             >
                                                 <div className="flex items-center justify-between">
@@ -159,7 +144,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides, produc
                                 </div>
                             )}
                         </div>
-                         {mainNavLinks.slice(3).map(link => (
+                         {mainNavLinks.map(link => (
                             <button
                                 key={link.name}
                                 onClick={() => handleNavClick(link.page, link.anchor)}
@@ -181,13 +166,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides, produc
                 {/* Mobile Menu */}
                 <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
                     <nav className="flex flex-col space-y-2 pb-4">
-                        <button
-                            onClick={() => handleNavClick('INFO')}
-                            className="text-left text-gray-700 hover:bg-gray-100 p-2 rounded"
-                        >
-                            What is Resveratrol?
-                        </button>
-
                         {/* Reviews Dropdown - Mobile */}
                         <button onClick={() => setIsReviewsOpen(!isReviewsOpen)} className="text-left font-semibold text-gray-700 p-2 rounded flex justify-between items-center">
                             Reviews
@@ -197,7 +175,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides, produc
                             <div className="pl-4 border-l-2 border-gray-200">
                                 <a onClick={() => handleProductNav('/#top-products')} className="block text-gray-600 hover:bg-gray-100 p-2 rounded cursor-pointer font-semibold">All Reviews</a>
                                 {products.map(product => (
-                                    <a key={product.slug} onClick={() => handleProductNav(`/products/${product.slug}`)} className="block text-gray-600 hover:bg-gray-100 p-2 rounded cursor-pointer">
+                                    <a key={product.slug} onClick={() => handleProductNav(`/products/${product.slug}/`)} className="block text-gray-600 hover:bg-gray-100 p-2 rounded cursor-pointer">
                                         <div className="text-sm font-medium">#{product.rank} {product.brand}</div>
                                         <div className="text-xs text-gray-500">{product.name}</div>
                                     </a>
@@ -239,12 +217,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, guides, produc
                             className="text-left text-gray-700 hover:bg-gray-100 p-2 rounded"
                         >
                             Blog
-                        </button>
-                        <button
-                            onClick={() => handleNavClick('ABOUT')}
-                            className="text-left text-gray-700 hover:bg-gray-100 p-2 rounded"
-                        >
-                            About Us
                         </button>
                     </nav>
                 </div>

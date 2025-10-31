@@ -65,10 +65,14 @@ const Hero: React.FC = () => {
                         {/* Product card */}
                         <div className="relative bg-white rounded-3xl shadow-2xl p-8 max-w-md transform hover:scale-105 transition-all duration-300">
                             <div className="bg-gray-100 rounded-2xl p-6 mb-4">
-                                <img
-                                    src="https://picsum.photos/seed/partiqlar/400/400"
-                                    alt="PartiQlar Pure Resveratrol"
+                            <img
+                                    src="/assets/Partiqlar_Resveratrol-1536x1536 (1).webp"
+                                    alt="PartiQlar Pure Resveratrol - #1 Rated Ultra-High Purity 500mg Supplement"
                                     className="w-full h-64 object-contain"
+                                    loading="eager"
+                                    width="400"
+                                height="400"
+                                sizes="(max-width: 768px) 80vw, 400px"
                                 />
                             </div>
                             <div className="text-center mb-4">
@@ -79,7 +83,7 @@ const Hero: React.FC = () => {
                                 <p className="text-sm text-gray-600">500mg Ultra-High Purity<br />60 Capsules</p>
                             </div>
                             <a
-                                href="https://partiqlar.com/products/pure-resveratrol-60-capsules?variant=42593106296941"
+                                href="https://partiqlar.com/?oid=8&affid=28"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-4 rounded-2xl text-center transition-all duration-300 shadow-lg"

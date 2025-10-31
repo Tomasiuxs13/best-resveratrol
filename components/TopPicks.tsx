@@ -14,6 +14,7 @@ const TopPickCard: React.FC<{ product: Product, label: string, badgeColor: strin
                 loading="lazy"
                 width="144"
                 height="144"
+                sizes="(max-width: 768px) 50vw, 144px"
             />
             <h3 className="font-bold text-gray-900 text-xl mb-1">{product.brand}</h3>
             <p className="text-sm text-gray-600 mb-4 min-h-[40px]">{product.name}</p>

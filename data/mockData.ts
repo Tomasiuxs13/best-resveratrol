@@ -7,7 +7,7 @@ export const products: Product[] = [
     name: "Pure Resveratrol",
     brand: "PartiQlar",
     slug: "partiqlar-pure-resveratrol",
-    image: "https://picsum.photos/seed/partiqlar/400/400",
+    image: "/assets/Partiqlar_Resveratrol-1536x1536 (1).webp",
     summary: "Ultra-high purity (≥99% trans-resveratrol) with sleek branding and exceptional bioavailability. Our top pick for 2025 combines pharmaceutical-grade quality with DTC convenience.",
     pros: [
       "Highest purity trans-resveratrol (≥99%)",
@@ -21,7 +21,7 @@ export const products: Product[] = [
     ],
     bestFor: "Best Overall",
     rating: 4.9,
-    affiliateLink: "https://partiqlar.com/products/pure-resveratrol-60-capsules?variant=42593106296941",
+    affiliateLink: "https://partiqlar.com/?oid=8&affid=28",
     servingSize: "1 Capsule Daily",
     potency: "500mg (≥99% Trans-Resveratrol)",
     certifications: ["Ultra-High Purity", "Third-Party Tested", "GMP Certified"]
@@ -32,7 +32,7 @@ export const products: Product[] = [
     name: "Ultra High Purity Resveratrol",
     brand: "Toniiq",
     slug: "toniiq-ultra-high-purity",
-    image: "https://picsum.photos/seed/toniiq/400/400",
+    image: "/assets/Toniiq Resveratrol.jpg",
     summary: "Premium 600mg formula with 98% trans-resveratrol backed by massive review volume. Toniiq's dedicated affiliate program and proven track record make this a trusted choice.",
     pros: [
       "High potency 600mg per serving",
@@ -46,7 +46,7 @@ export const products: Product[] = [
     ],
     bestFor: "Premium Choice",
     rating: 4.8,
-    affiliateLink: "https://www.toniiq.com/products/resveratrol-plus?pr_prod_strat=e5_desc&pr_rec_id=b8a85808d&pr_rec_pid=7665236476118&pr_ref_pid=3545137348685&pr_seq=uniform",
+    affiliateLink: "https://amzn.to/49tDbPy",
     servingSize: "1 Capsule Daily",
     potency: "600mg (98% Trans-Resveratrol)",
     certifications: ["Third-Party Tested", "High Purity", "GMP Certified"]
@@ -57,7 +57,7 @@ export const products: Product[] = [
     name: "Resveratrol",
     brand: "Double Wood Supplements",
     slug: "double-wood-resveratrol",
-    image: "https://picsum.photos/seed/doublewood/400/400",
+    image: "/assets/71g358z8voL._AC_SL1498_.jpg",
     summary: "Outstanding value with budget-friendly per-serving cost and massive SKU catalog for cross-sell opportunities. Available through Amazon with Impact/FlexOffers affiliate programs.",
     pros: [
       "Excellent value for money",
@@ -71,7 +71,7 @@ export const products: Product[] = [
     ],
     bestFor: "Best Value",
     rating: 4.7,
-    affiliateLink: "https://www.amazon.com/Resveratrol-Supplement-Polygonum-Double-Wood/dp/B0FRKCTD7F/",
+    affiliateLink: "https://amzn.to/47irqKw",
     servingSize: "1 Capsule Daily",
     potency: "500mg Trans-Resveratrol",
     certifications: ["GMP Certified", "Third-Party Tested"]
@@ -82,7 +82,7 @@ export const products: Product[] = [
     name: "Optimized Resveratrol Elite",
     brand: "Life Extension",
     slug: "life-extension-optimized",
-    image: "https://picsum.photos/seed/lifeextension/400/400",
+    image: "/assets/Lifeextention_resveratrol.jpg",
     summary: "Research-heavy positioning with quercetin combo formula. Life Extension's brand-run affiliate program and science-backed reputation make this ideal for educated health enthusiasts.",
     pros: [
       "Enhanced with quercetin for synergistic effects",
@@ -96,7 +96,7 @@ export const products: Product[] = [
     ],
     bestFor: "Research-Backed",
     rating: 4.7,
-    affiliateLink: "https://www.amazon.com/Life-Extension-Optimized-Resveratrol-Capsules/dp/B0D1Q51SCT/",
+    affiliateLink: "https://amzn.to/48WIozm",
     servingSize: "1 Capsule Daily",
     potency: "Resveratrol + Quercetin Complex",
     certifications: ["Third-Party Tested", "Science-Based", "GMP Certified"]
@@ -107,7 +107,7 @@ export const products: Product[] = [
     name: "Longevity Resveratrol",
     brand: "ProHealth",
     slug: "prohealth-longevity",
-    image: "https://picsum.photos/seed/prohealth/400/400",
+    image: "/assets/Prohealth Resveratrol.webp",
     summary: "Trusted by the longevity community with frequent promotions and house affiliate program. Enhanced bioavailability formula for better absorption and results.",
     pros: [
       "Enhanced for superior absorption",
@@ -121,7 +121,7 @@ export const products: Product[] = [
     ],
     bestFor: "Longevity Focus",
     rating: 4.6,
-    affiliateLink: "https://www.amazon.com/ProHealth-Longevity-Resveratrol-Polyphenol-Absorption/dp/B083F5WC2P",
+    affiliateLink: "https://prohealth.pxf.io/jeqmqb",
     servingSize: "1 Capsule Daily",
     potency: "Enhanced Absorption Formula",
     certifications: ["Third-Party Tested", "Enhanced Bioavailability"]
@@ -132,7 +132,7 @@ export const products: Product[] = [
     name: "Lipo Resveratrol",
     brand: "Renue By Science",
     slug: "renue-lipo-resveratrol",
-    image: "https://picsum.photos/seed/renue/400/400",
+    image: "/assets/Renue by science Resveratrol.jpg",
     summary: "Cutting-edge liposomal delivery technology for maximum bioavailability. Available through Refersion + CJ affiliate listings with unique delivery-tech angle for higher CTR.",
     pros: [
       "Advanced liposomal delivery system",
@@ -146,7 +146,7 @@ export const products: Product[] = [
     ],
     bestFor: "Maximum Absorption",
     rating: 4.6,
-    affiliateLink: "https://renuebyscience.com/products/lipo-resveratrol-powdered-liposomal-resveratrol",
+    affiliateLink: "https://amzn.to/4oh0yAt",
     servingSize: "As Directed",
     potency: "Liposomal Resveratrol",
     certifications: ["Advanced Liposomal Technology", "Third-Party Tested"]
@@ -157,7 +157,7 @@ export const products: Product[] = [
     name: "ResveraCel",
     brand: "Thorne",
     slug: "thorne-resveracel",
-    image: "https://picsum.photos/seed/thorne/400/400",
+    image: "/assets/Thorne Resveratrol.jpg",
     summary: "Stacked longevity formula combining NR (nicotinamide riboside) with resveratrol. Thorne's affiliate/partner program and practitioner-grade reputation offer unique positioning.",
     pros: [
       "Combines NR + resveratrol for synergy",
@@ -171,7 +171,7 @@ export const products: Product[] = [
     ],
     bestFor: "Stacked Longevity",
     rating: 4.5,
-    affiliateLink: "https://www.thorne.com/products/dp/resveracel?srsltid=AfmBOoq4er5LKbqkDe7swPOUnd54opK3Lcl06KcobGrpXh_BTggIXb9Z",
+    affiliateLink: "https://amzn.to/47Oifl3",
     servingSize: "2 Capsules Daily",
     potency: "NR + Resveratrol Stack",
     certifications: ["Practitioner-Grade", "NSF Certified", "Third-Party Tested"]
@@ -182,7 +182,7 @@ export const products: Product[] = [
     name: "Natural Resveratrol",
     brand: "NOW Foods",
     slug: "now-natural-resveratrol",
-    image: "https://picsum.photos/seed/now/400/400",
+    image: "/assets/Now supplements Resveratrol.jpg",
     summary: "Mass-market trust with massive review counts. Available through NOW Ambassador program or Amazon Associates with proven consumer confidence and accessibility.",
     pros: [
       "Trusted mainstream brand",
@@ -196,7 +196,7 @@ export const products: Product[] = [
     ],
     bestFor: "Mass Market Trust",
     rating: 4.5,
-    affiliateLink: "https://www.amazon.com/NOW-Supplements-Natural-Resveratrol-Capsules/dp/B002G75WZI/",
+    affiliateLink: "https://amzn.to/47Vzm3x",
     servingSize: "1 Capsule Daily",
     potency: "200mg Trans-Resveratrol",
     certifications: ["GMP Certified", "Non-GMO", "Third-Party Tested"]
@@ -207,7 +207,7 @@ export const products: Product[] = [
     name: "Resveratrol",
     brand: "Jarrow Formulas",
     slug: "jarrow-resveratrol",
-    image: "https://picsum.photos/seed/jarrow/400/400",
+    image: "/assets/Jarrow formulas resveratrol.jpg",
     summary: "Science-forward legacy brand with Affiliatly program. Jarrow's research-driven approach and established reputation appeal to informed supplement users.",
     pros: [
       "Science-backed formulation",
@@ -221,7 +221,7 @@ export const products: Product[] = [
     ],
     bestFor: "Science-Forward",
     rating: 4.4,
-    affiliateLink: "https://www.amazon.com/Jarrow-Formulas-Resveratrol-Supports-Cardiovascular/dp/B0015ZUSBA",
+    affiliateLink: "https://amzn.to/47zdFWw",
     servingSize: "1 Capsule Daily",
     potency: "100mg Trans-Resveratrol",
     certifications: ["Science-Based", "GMP Certified", "Third-Party Tested"]
@@ -232,7 +232,7 @@ export const products: Product[] = [
     name: "Resveratrol EXTRA",
     brand: "Pure Encapsulations",
     slug: "pure-encapsulations-extra",
-    image: "https://picsum.photos/seed/pure/400/400",
+    image: "/assets/pure encapsulations resveratrol.jpg",
     summary: "Hypoallergenic practitioner-grade formulation with HCP credibility. Ambassador program and retailer availability offer strong monetization through healthcare professional channels.",
     pros: [
       "Hypoallergenic formulation",
@@ -246,7 +246,7 @@ export const products: Product[] = [
     ],
     bestFor: "Practitioner-Grade",
     rating: 4.4,
-    affiliateLink: "https://www.amazon.com/Pure-Encapsulations-Resveratrol-Hypoallergenic-Cardiovascular/dp/B0078VYLCM",
+    affiliateLink: "https://amzn.to/3JF8qN7",
     servingSize: "1 Capsule Daily",
     potency: "Resveratrol EXTRA Formula",
     certifications: ["Hypoallergenic", "Practitioner-Grade", "Third-Party Tested"]
@@ -350,11 +350,11 @@ export const blogPosts: BlogPost[] = [
 
       <p>To maximize resveratrol's anti-aging potential:</p>
 
-      <p><strong>Choose High-Purity Supplements:</strong> Look for products with at least 98% trans-resveratrol. Our top pick, <a href='/products/partiqlar-pure-resveratrol'>PartiQlar Pure Resveratrol</a>, offers ≥99% purity for optimal results.</p>
+      <p><strong>Choose High-Purity Supplements:</strong> Look for products with at least 98% trans-resveratrol. Our top pick, <a href='/products/partiqlar-pure-resveratrol/'>PartiQlar Pure Resveratrol</a>, offers ≥99% purity for optimal results.</p>
 
-      <p><strong>Dose Appropriately:</strong> Research suggests 250-500mg daily is the sweet spot for anti-aging benefits. <a href='/products/toniiq-ultra-high-purity'>Toniiq's 600mg formula</a> provides robust dosing for those seeking maximum longevity support.</p>
+      <p><strong>Dose Appropriately:</strong> Research suggests 250-500mg daily is the sweet spot for anti-aging benefits. <a href='/products/toniiq-ultra-high-purity/'>Toniiq's 600mg formula</a> provides robust dosing for those seeking maximum longevity support.</p>
 
-      <p><strong>Enhance Absorption:</strong> Take resveratrol with healthy fats or choose formulations with bioavailability enhancers. <a href='/products/renue-lipo-resveratrol'>Renue By Science's Liposomal Resveratrol</a> uses advanced delivery technology for superior absorption.</p>
+      <p><strong>Enhance Absorption:</strong> Take resveratrol with healthy fats or choose formulations with bioavailability enhancers. <a href='/products/renue-lipo-resveratrol/'>Renue By Science's Liposomal Resveratrol</a> uses advanced delivery technology for superior absorption.</p>
 
       <p><strong>Consistency is Key:</strong> Anti-aging benefits accumulate over time. Daily supplementation for at least 8-12 weeks is necessary to see meaningful results.</p>
 
@@ -428,7 +428,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>This is the cutting edge of supplement absorption. Liposomal formulations wrap resveratrol molecules in tiny fat bubbles (liposomes) that protect them during digestion and deliver them directly into your cells.</p>
 
-      <p>Research shows liposomal resveratrol can achieve blood levels 8-10 times higher than standard capsules. <a href='/products/renue-lipo-resveratrol'>Renue By Science's Liposomal Resveratrol</a> uses this advanced technology for maximum bioavailability.</p>
+      <p>Research shows liposomal resveratrol can achieve blood levels 8-10 times higher than standard capsules. <a href='/products/renue-lipo-resveratrol/'>Renue By Science's Liposomal Resveratrol</a> uses this advanced technology for maximum bioavailability.</p>
 
       <p><strong>Why liposomal works:</strong></p>
       <ul>
@@ -461,7 +461,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Quercetin is another powerful polyphenol that works synergistically with resveratrol. When taken together, they enhance each other's absorption and biological activity.</p>
 
-      <p><a href='/products/life-extension-optimized'>Life Extension's Optimized Resveratrol Elite</a> combines both compounds for enhanced effects. The quercetin helps slow resveratrol metabolism, keeping it active in your system longer.</p>
+      <p><a href='/products/life-extension-optimized/'>Life Extension's Optimized Resveratrol Elite</a> combines both compounds for enhanced effects. The quercetin helps slow resveratrol metabolism, keeping it active in your system longer.</p>
 
       <h3>Strategy #7: Avoid These Absorption Blockers</h3>
 
@@ -478,7 +478,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>The higher the purity, the more active ingredient you're getting. Look for supplements with at least 98% trans-resveratrol content.</p>
 
-      <p><a href='/products/partiqlar-pure-resveratrol'>PartiQlar Pure Resveratrol</a> offers ≥99% purity—the highest available—ensuring you get maximum trans-resveratrol with minimal inactive compounds.</p>
+      <p><a href='/products/partiqlar-pure-resveratrol/'>PartiQlar Pure Resveratrol</a> offers ≥99% purity—the highest available—ensuring you get maximum trans-resveratrol with minimal inactive compounds.</p>
 
       <h3>Strategy #9: Consider Sublingual Delivery</h3>
 
@@ -549,7 +549,7 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Cellular uptake:</strong> Pterostilbene crosses cell membranes more easily</li>
       </ul>
 
-      <p>However, modern resveratrol formulations have leveled the playing field. <a href='/products/renue-lipo-resveratrol'>Liposomal delivery systems</a> and <a href='/products/partiqlar-pure-resveratrol'>ultra-high-purity formulations</a> dramatically improve resveratrol's bioavailability, making it competitive with pterostilbene.</p>
+      <p>However, modern resveratrol formulations have leveled the playing field. <a href='/products/renue-lipo-resveratrol/'>Liposomal delivery systems</a> and <a href='/products/partiqlar-pure-resveratrol/'>ultra-high-purity formulations</a> dramatically improve resveratrol's bioavailability, making it competitive with pterostilbene.</p>
 
       <h3>The Research Volume Gap</h3>
 
@@ -578,12 +578,12 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Pterostilbene:</strong> $30-60 per month for equivalent dosing</li>
       </ul>
 
-      <p>The price difference reflects pterostilbene's more complex extraction and synthesis process. <a href='/products/double-wood-resveratrol'>Budget-friendly resveratrol options</a> make longevity supplementation accessible to everyone.</p>
+      <p>The price difference reflects pterostilbene's more complex extraction and synthesis process. <a href='/products/double-wood-resveratrol/'>Budget-friendly resveratrol options</a> make longevity supplementation accessible to everyone.</p>
 
       <h3>Health Benefits Comparison</h3>
 
       <p><strong>Cardiovascular Health:</strong></p>
-      <p>Both compounds support heart health, but through slightly different mechanisms. Resveratrol has more extensive human trials showing cardiovascular benefits. <a href='/products/life-extension-optimized'>Formulations combining resveratrol with quercetin</a> may offer the most comprehensive cardiovascular support.</p>
+      <p>Both compounds support heart health, but through slightly different mechanisms. Resveratrol has more extensive human trials showing cardiovascular benefits. <a href='/products/life-extension-optimized/'>Formulations combining resveratrol with quercetin</a> may offer the most comprehensive cardiovascular support.</p>
 
       <p><strong>Cognitive Function:</strong></p>
       <p>Pterostilbene may have a slight edge for brain health. Its superior ability to cross the blood-brain barrier and longer half-life could provide sustained cognitive benefits. However, resveratrol also shows strong neuroprotective effects in research.</p>
@@ -624,10 +624,10 @@ export const blogPosts: BlogPost[] = [
 
       <p><strong>Best resveratrol options:</strong></p>
       <ul>
-        <li>For maximum purity: <a href='/products/partiqlar-pure-resveratrol'>PartiQlar Pure Resveratrol</a> (≥99%)</li>
-        <li>For best absorption: <a href='/products/renue-lipo-resveratrol'>Renue By Science Liposomal</a></li>
-        <li>For best value: <a href='/products/double-wood-resveratrol'>Double Wood Supplements</a></li>
-        <li>For research-backed: <a href='/products/life-extension-optimized'>Life Extension Optimized</a></li>
+        <li>For maximum purity: <a href='/products/partiqlar-pure-resveratrol/'>PartiQlar Pure Resveratrol</a> (≥99%)</li>
+        <li>For best absorption: <a href='/products/renue-lipo-resveratrol/'>Renue By Science Liposomal</a></li>
+        <li>For best value: <a href='/products/double-wood-resveratrol/'>Double Wood Supplements</a></li>
+        <li>For research-backed: <a href='/products/life-extension-optimized/'>Life Extension Optimized</a></li>
       </ul>
 
       <h3>Who Should Choose Pterostilbene?</h3>
@@ -662,7 +662,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>When comparing resveratrol to pterostilbene, make sure you're looking at high-purity trans-resveratrol (≥98%). Lower-quality resveratrol supplements with 50% or less purity simply can't compete with pterostilbene—but ultra-pure formulations absolutely can.</p>
 
-      <p><a href='/products/toniiq-ultra-high-purity'>Toniiq's 98% pure resveratrol</a> provides 600mg of highly bioavailable trans-resveratrol, rivaling pterostilbene's effectiveness at a lower cost.</p>
+      <p><a href='/products/toniiq-ultra-high-purity/'>Toniiq's 98% pure resveratrol</a> provides 600mg of highly bioavailable trans-resveratrol, rivaling pterostilbene's effectiveness at a lower cost.</p>
 
       <h3>The Verdict</h3>
 
@@ -832,7 +832,7 @@ export const blogPosts: BlogPost[] = [
 
       <p><strong>Daily protocol:</strong></p>
       <ul>
-        <li><strong>Morning:</strong> Take 250-500mg resveratrol supplement (like <a href='/products/partiqlar-pure-resveratrol'>PartiQlar Pure Resveratrol</a>) with breakfast</li>
+        <li><strong>Morning:</strong> Take 250-500mg resveratrol supplement (like <a href='/products/partiqlar-pure-resveratrol/'>PartiQlar Pure Resveratrol</a>) with breakfast</li>
         <li><strong>Throughout the day:</strong> Include resveratrol-rich foods (berries, grapes, dark chocolate, nuts)</li>
         <li><strong>Evening:</strong> Enjoy a glass of red wine with dinner if desired</li>
       </ul>
@@ -867,7 +867,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>For optimal longevity support, combine a diet rich in colorful fruits, dark chocolate, and red wine (in moderation) with a high-quality resveratrol supplement like our <a href='/'>top-rated options</a>.</p>
 
-      <p>Ready to supercharge your resveratrol intake? Explore our <a href='/products/toniiq-ultra-high-purity'>600mg high-potency formulations</a> or budget-friendly <a href='/products/double-wood-resveratrol'>value options</a> that provide 100-300x more resveratrol than food sources.</p>
+      <p>Ready to supercharge your resveratrol intake? Explore our <a href='/products/toniiq-ultra-high-purity/'>600mg high-potency formulations</a> or budget-friendly <a href='/products/double-wood-resveratrol/'>value options</a> that provide 100-300x more resveratrol than food sources.</p>
     `
   },
   {
@@ -888,9 +888,9 @@ export const blogPosts: BlogPost[] = [
       <h3>Quick Verdict Summary</h3>
 
       <ul>
-        <li><strong><a href='/products/partiqlar-pure-resveratrol'>PartiQlar Pure Resveratrol</a>:</strong> Best overall for maximum purity (≥99%) and premium quality</li>
-        <li><strong><a href='/products/toniiq-ultra-high-purity'>Toniiq Ultra High Purity</a>:</strong> Best for high potency (600mg) with excellent purity (98%)</li>
-        <li><strong><a href='/products/double-wood-resveratrol'>Double Wood Supplements</a>:</strong> Best value with solid 500mg dosing at budget-friendly prices</li>
+        <li><strong><a href='/products/partiqlar-pure-resveratrol/'>PartiQlar Pure Resveratrol</a>:</strong> Best overall for maximum purity (≥99%) and premium quality</li>
+        <li><strong><a href='/products/toniiq-ultra-high-purity/'>Toniiq Ultra High Purity</a>:</strong> Best for high potency (600mg) with excellent purity (98%)</li>
+        <li><strong><a href='/products/double-wood-resveratrol/'>Double Wood Supplements</a>:</strong> Best value with solid 500mg dosing at budget-friendly prices</li>
       </ul>
 
       <h3>Purity Comparison: The Most Critical Factor</h3>
@@ -988,7 +988,7 @@ export const blogPosts: BlogPost[] = [
         <li>Want pharmaceutical-grade supplementation</li>
       </ul>
 
-      <p><a href='/products/partiqlar-pure-resveratrol'>Learn more about PartiQlar →</a></p>
+      <p><a href='/products/partiqlar-pure-resveratrol/'>Learn more about PartiQlar →</a></p>
 
       <h3>Who Should Choose Toniiq?</h3>
 
@@ -1001,7 +1001,7 @@ export const blogPosts: BlogPost[] = [
         <li>Are serious about longevity and want a proven brand</li>
       </ul>
 
-      <p><a href='/products/toniiq-ultra-high-purity'>Learn more about Toniiq →</a></p>
+      <p><a href='/products/toniiq-ultra-high-purity/'>Learn more about Toniiq →</a></p>
 
       <h3>Who Should Choose Double Wood?</h3>
 
@@ -1014,7 +1014,7 @@ export const blogPosts: BlogPost[] = [
         <li>Want to stack with other Double Wood supplements</li>
       </ul>
 
-      <p><a href='/products/double-wood-resveratrol'>Learn more about Double Wood →</a></p>
+      <p><a href='/products/double-wood-resveratrol/'>Learn more about Double Wood →</a></p>
 
       <h3>The Verdict: Which One Wins?</h3>
 
@@ -1089,27 +1089,34 @@ export const aboutInfo: AboutInfo = {
 export const guides: GuidePost[] = [
   {
     id: 1,
+    slug: "what-is-resveratrol",
+    title: "What is Resveratrol? A Comprehensive Guide",
+    summary: "Learn everything about resveratrol - what it is, where it comes from, how it works, and its scientifically-supported health benefits.",
+    content: "<h2>Introduction</h2><p>Resveratrol is a naturally occurring polyphenol compound found in various plants, particularly in the skins of red grapes, berries, and Japanese knotweed. This powerful antioxidant has gained significant attention in recent years for its potential health benefits, particularly in the areas of anti-aging, cardiovascular health, and longevity.</p><p>First identified in the 1940s and popularized by the 'French Paradox' observation in the 1990s, resveratrol has become one of the most extensively studied natural compounds in nutritional science.</p><h2>The Science Behind Resveratrol</h2><p>Resveratrol belongs to a group of compounds called stilbenes, which plants produce as a defense mechanism against environmental stress, infection, and UV radiation. In the human body, resveratrol acts as a powerful antioxidant, neutralizing harmful free radicals that can damage cells and accelerate aging.</p><p>The compound exists in two forms: cis-resveratrol and trans-resveratrol. Trans-resveratrol is the biologically active form that provides health benefits, which is why quality supplements specify their trans-resveratrol content.</p><h2>Natural Sources of Resveratrol</h2><p>While resveratrol is found in various foods, the highest concentrations come from:</p><ul><li><strong>Red grape skins:</strong> The primary dietary source, especially in red wine</li><li><strong>Japanese knotweed (Polygonum cuspidatum):</strong> The richest natural source, commonly used in supplements</li><li><strong>Berries:</strong> Including blueberries, cranberries, and mulberries</li><li><strong>Peanuts:</strong> Contain moderate amounts of resveratrol</li><li><strong>Dark chocolate:</strong> From cocoa beans</li></ul><p>However, obtaining therapeutic doses from food alone is challenging, which is why many people turn to concentrated supplements.</p><h2>Health Benefits of Resveratrol</h2><p>Research suggests resveratrol may offer numerous health benefits:</p><ul><li><strong>Cardiovascular Health:</strong> May support healthy blood pressure, improve blood flow, and protect against oxidative damage to blood vessels</li><li><strong>Anti-Aging Effects:</strong> Activates sirtuins, proteins associated with longevity and cellular health</li><li><strong>Cognitive Function:</strong> May support brain health and protect against age-related cognitive decline</li><li><strong>Metabolic Health:</strong> Could help improve insulin sensitivity and support healthy blood sugar levels</li><li><strong>Anti-Inflammatory Properties:</strong> Helps reduce chronic inflammation throughout the body</li></ul><p>For more detailed information, check our <a href='/blog'>blog posts</a> on resveratrol research.</p><h2>How Resveratrol Works</h2><p><strong>Sirtuin Activation:</strong> Resveratrol activates sirtuins (particularly SIRT1), proteins that regulate cellular health, metabolism, and aging. This activation mimics some effects of caloric restriction, a well-established longevity intervention.</p><p><strong>Antioxidant Activity:</strong> It neutralizes reactive oxygen species (ROS) that cause cellular damage and contribute to aging and disease.</p><p><strong>Anti-Inflammatory Action:</strong> Resveratrol inhibits pro-inflammatory enzymes and signaling pathways, reducing chronic inflammation.</p><p><strong>Mitochondrial Support:</strong> It enhances mitochondrial function and promotes the creation of new mitochondria, supporting cellular energy production.</p><h2>Dosage and Supplementation</h2><p>Clinical studies have used resveratrol doses ranging from 150mg to 2000mg daily, though most research focuses on the 250-500mg range. For general health maintenance, 200-400mg of trans-resveratrol per day is typically recommended.</p><p>When choosing a supplement, look for:</p><ul><li>At least 95% trans-resveratrol content</li><li>Third-party testing for purity and potency</li><li>Absorption enhancers like BioPerine (black pepper extract)</li><li>GMP certification and quality manufacturing</li></ul><p>Visit our <a href='/'>reviews page</a> to find the best resveratrol supplements for your needs.</p><h2>Safety and Side Effects</h2><p>Resveratrol is generally considered safe with few side effects when taken at recommended doses. Some people may experience mild digestive discomfort, nausea, or diarrhea, particularly at higher doses.</p><p><strong>Important Considerations:</strong></p><ul><li>May interact with blood thinners (anticoagulants)</li><li>Could potentially interact with medications metabolized by certain liver enzymes</li><li>Not recommended during pregnancy or breastfeeding due to insufficient safety data</li><li>People with hormone-sensitive conditions should consult a healthcare provider</li></ul><p>Always consult with a healthcare professional before starting any new supplement regimen, especially if you have existing health conditions or take medications. Check our <a href='/faq'>FAQ page</a> for more information.</p>"
+  },
+  {
+    id: 2,
     slug: "how-to-choose-resveratrol",
     title: "How to Choose the Best Resveratrol Supplement",
     summary: "A comprehensive guide to selecting a high-quality resveratrol supplement that delivers real results.",
     content: "<h2>Key Factors to Consider</h2><p>Choosing the right resveratrol supplement can be overwhelming with so many options available. This guide will help you make an informed decision.</p><h3>1. Trans-Resveratrol Content</h3><p>The most critical factor is the percentage of trans-resveratrol, the active form that provides health benefits. Look for supplements that clearly state they contain at least 95% trans-resveratrol. Many lower-quality products contain mostly cis-resveratrol, which is less bioavailable and effective.</p><h3>2. Dosage and Potency</h3><p>Research suggests effective doses range from 200-500mg daily. Choose a supplement that provides an appropriate dose without requiring multiple capsules. Higher isn't always better – bioavailability and quality matter more than sheer quantity.</p><h3>3. Absorption Enhancers</h3><p>Resveratrol has relatively poor bioavailability on its own. Premium supplements include absorption enhancers like BioPerine (black pepper extract), which can increase absorption by up to 1500%. This makes a significant difference in effectiveness.</p><h3>4. Third-Party Testing</h3><p>Reputable manufacturers invest in third-party testing to verify purity, potency, and the absence of contaminants like heavy metals, pesticides, and microbes. Look for certificates of analysis or third-party certifications.</p><h3>5. Manufacturing Quality</h3><p>Choose supplements made in GMP (Good Manufacturing Practice) certified facilities. This ensures consistent quality control and adherence to strict manufacturing standards. Products made in the USA often have additional oversight from the FDA.</p><h3>6. Additional Ingredients</h3><p>Some formulations include complementary ingredients like quercetin, grape seed extract, or vitamins that work synergistically with resveratrol. Decide whether you want a pure resveratrol supplement or a comprehensive antioxidant blend.</p><h3>7. Capsule Type</h3><p>Check whether capsules are vegetarian/vegan if this aligns with your dietary preferences. Also consider capsule size – some people prefer smaller capsules that are easier to swallow.</p><h3>8. Value for Money</h3><p>Calculate the cost per serving and compare it to the potency and quality. The cheapest option isn't always the best value if it contains lower-quality ingredients or ineffective doses.</p><p>For our top recommendations, check out our <a href='/'>reviews page</a>. If you have specific questions, visit our <a href='/faq'>FAQ section</a>.</p>"
   },
   {
-    id: 2,
+    id: 3,
     slug: "understanding-resveratrol-purity",
     title: "Understanding Resveratrol Purity and Potency",
     summary: "Learn why purity matters and how to decode supplement labels to ensure you're getting what you pay for.",
     content: "<h2>The Importance of Purity</h2><p>Not all resveratrol supplements are created equal. Understanding purity and potency is essential for getting real results from your supplementation.</p><h3>What Does Purity Mean?</h3><p>Purity refers to the percentage of trans-resveratrol in the total resveratrol content. A supplement claiming 500mg of resveratrol might only contain 50mg of active trans-resveratrol if it's only 10% pure. Always look for the trans-resveratrol percentage on the label.</p><h3>Industry Standards</h3><p>High-quality supplements typically contain 95-99% trans-resveratrol. Anything below 90% should be viewed with skepticism. Some products deliberately obfuscate this information by only listing total resveratrol content.</p><h3>Source Matters</h3><p>Resveratrol is typically extracted from Japanese knotweed (Polygonum cuspidatum) or grape skins. Japanese knotweed provides higher concentrations and is more cost-effective, which is why it's the preferred source for quality supplements. Grape-derived resveratrol isn't inherently better despite marketing claims.</p><h3>Decoding Labels</h3><p>Look for these key pieces of information on supplement labels:</p><ul><li><strong>Trans-resveratrol percentage:</strong> Should be clearly stated and above 95%</li><li><strong>Milligrams per serving:</strong> Typically 200-500mg for effective dosing</li><li><strong>Source of resveratrol:</strong> Usually Japanese knotweed or grape extract</li><li><strong>Other ingredients:</strong> Check for absorption enhancers and avoid unnecessary fillers</li><li><strong>Testing certifications:</strong> Third-party testing verification</li></ul><h3>Bioavailability vs. Potency</h3><p>A 500mg supplement with poor bioavailability may be less effective than a 300mg supplement with absorption enhancers. This is why formulations including BioPerine or micronized resveratrol often outperform higher-dose competitors.</p><h3>Red Flags</h3><p>Be wary of supplements that:</p><ul><li>Don't specify trans-resveratrol percentage</li><li>Make unrealistic health claims</li><li>Lack third-party testing</li><li>Have suspiciously low prices compared to competitors</li><li>Use proprietary blends to hide ingredient amounts</li></ul><p>For verified, high-purity options, see our <a href='/'>top-rated supplements</a>. Learn more about resveratrol on our <a href='/what-is-resveratrol'>information page</a>.</p>"
   },
   {
-    id: 3,
+    id: 4,
     slug: "resveratrol-health-benefits",
     title: "The Health Benefits of Resveratrol Explained",
     summary: "An evidence-based overview of resveratrol's scientifically-supported health benefits and how it works in your body.",
     content: "<h2>What Can Resveratrol Do For You?</h2><p>Resveratrol has been studied extensively for its potential health benefits. Here's what the science actually says.</p><h3>Cardiovascular Health</h3><p>Perhaps the most well-established benefit of resveratrol is its positive impact on heart health. Studies suggest it may:</p><ul><li>Improve blood vessel function and flexibility</li><li>Support healthy blood pressure levels</li><li>Reduce LDL (bad) cholesterol oxidation</li><li>Decrease inflammation in blood vessels</li><li>Support healthy platelet function</li></ul><p>These effects may contribute to the 'French Paradox' – the observation that French people have relatively low rates of heart disease despite consuming diets high in saturated fats, possibly due to regular red wine consumption.</p><h3>Anti-Aging and Longevity</h3><p>Resveratrol activates sirtuins, particularly SIRT1, proteins that regulate cellular aging and metabolism. This activation mimics some effects of caloric restriction, a proven longevity intervention. Animal studies show promising lifespan extension, though human longevity benefits require more research.</p><h3>Cognitive Function</h3><p>Research indicates resveratrol may support brain health through several mechanisms:</p><ul><li>Promoting healthy blood flow to the brain</li><li>Protecting neurons from oxidative stress</li><li>Supporting the formation of new neurons (neurogenesis)</li><li>Reducing brain inflammation</li><li>Potentially protecting against age-related cognitive decline</li></ul><h3>Metabolic Health</h3><p>Studies suggest resveratrol may help:</p><ul><li>Improve insulin sensitivity</li><li>Support healthy blood sugar levels</li><li>Enhance mitochondrial function</li><li>Promote healthy weight management when combined with lifestyle changes</li></ul><h3>Anti-Inflammatory Effects</h3><p>Chronic inflammation underlies many age-related diseases. Resveratrol has been shown to inhibit inflammatory pathways and reduce markers of inflammation throughout the body.</p><h3>Antioxidant Protection</h3><p>As a powerful antioxidant, resveratrol neutralizes free radicals that damage cells, proteins, and DNA. This protection may help prevent various chronic diseases and slow the aging process.</p><h3>What the Evidence Shows</h3><p>While animal and cell culture studies are highly promising, human research is still evolving. Most human studies show positive trends but often involve small sample sizes or short durations. The benefits observed in animal studies don't always translate directly to humans, but the existing evidence is encouraging.</p><h3>Realistic Expectations</h3><p>Resveratrol is not a miracle cure, but rather a valuable tool for supporting overall health and healthy aging. It works best when combined with a healthy diet, regular exercise, adequate sleep, and stress management.</p><p>Ready to start supplementing? Check our <a href='/'>top picks</a> or read our <a href='/blog'>blog</a> for more research-based insights.</p>"
   },
   {
-    id: 4,
+    id: 5,
     slug: "resveratrol-dosage-guide",
     title: "Complete Resveratrol Dosage Guide",
     summary: "Find the optimal resveratrol dosage for your health goals with this evidence-based guide.",

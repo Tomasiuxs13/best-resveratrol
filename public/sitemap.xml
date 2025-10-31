@@ -14,13 +14,6 @@
 
   <!-- Main Pages -->
   <url>
-    <loc>https://bestresveratrol.com/what-is-resveratrol</loc>
-    <lastmod>2025-01-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
     <loc>https://bestresveratrol.com/faq</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -50,70 +43,70 @@
 
   <!-- Product Pages -->
   <url>
-    <loc>https://bestresveratrol.com/products/partiqlar-pure-resveratrol</loc>
+    <loc>https://bestresveratrol.com/products/partiqlar-pure-resveratrol/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/toniiq-ultra-high-purity</loc>
+    <loc>https://bestresveratrol.com/products/toniiq-ultra-high-purity/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/double-wood-resveratrol</loc>
+    <loc>https://bestresveratrol.com/products/double-wood-resveratrol/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/life-extension-optimized</loc>
+    <loc>https://bestresveratrol.com/products/life-extension-optimized/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/prohealth-longevity</loc>
+    <loc>https://bestresveratrol.com/products/prohealth-longevity/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/renue-lipo-resveratrol</loc>
+    <loc>https://bestresveratrol.com/products/renue-lipo-resveratrol/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/thorne-resveracel</loc>
+    <loc>https://bestresveratrol.com/products/thorne-resveracel/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/now-natural-resveratrol</loc>
+    <loc>https://bestresveratrol.com/products/now-natural-resveratrol/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/jarrow-resveratrol</loc>
+    <loc>https://bestresveratrol.com/products/jarrow-resveratrol/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/products/pure-encapsulations-extra</loc>
+    <loc>https://bestresveratrol.com/products/pure-encapsulations-extra/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
@@ -121,28 +114,35 @@
 
   <!-- Guide Pages -->
   <url>
-    <loc>https://bestresveratrol.com/guides/how-to-choose-resveratrol</loc>
+    <loc>https://bestresveratrol.com/guides/what-is-resveratrol/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://bestresveratrol.com/guides/how-to-choose-resveratrol/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/guides/understanding-resveratrol-purity</loc>
+    <loc>https://bestresveratrol.com/guides/understanding-resveratrol-purity/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/guides/resveratrol-health-benefits</loc>
+    <loc>https://bestresveratrol.com/guides/resveratrol-health-benefits/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/guides/resveratrol-dosage-guide</loc>
+    <loc>https://bestresveratrol.com/guides/resveratrol-dosage-guide/</loc>
     <lastmod>2025-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -150,38 +150,67 @@
 
   <!-- Blog Post Pages -->
   <url>
-    <loc>https://bestresveratrol.com/blog/resveratrol-anti-aging-science</loc>
+    <loc>https://bestresveratrol.com/blog/resveratrol-anti-aging-science/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/blog/maximize-resveratrol-absorption</loc>
+    <loc>https://bestresveratrol.com/blog/maximize-resveratrol-absorption/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/blog/resveratrol-vs-pterostilbene</loc>
+    <loc>https://bestresveratrol.com/blog/resveratrol-vs-pterostilbene/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/blog/natural-food-sources-resveratrol</loc>
+    <loc>https://bestresveratrol.com/blog/natural-food-sources-resveratrol/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://bestresveratrol.com/blog/partiqlar-vs-toniiq-vs-double-wood</loc>
+    <loc>https://bestresveratrol.com/blog/partiqlar-vs-toniiq-vs-double-wood/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://bestresveratrol.com/privacy-policy</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://bestresveratrol.com/terms-of-service</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://bestresveratrol.com/disclaimer</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://bestresveratrol.com/affiliate-disclosure</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>

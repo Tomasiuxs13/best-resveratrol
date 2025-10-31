@@ -21,12 +21,20 @@
   RewriteRule ^robots\.txt$ - [L]
   RewriteRule ^sitemap\.xml$ - [L]
 
-  # Handle React Router - redirect all requests to index.html
-  # except for existing files and directories
+  # Enforce trailing slash for product pages (SEO canonicalization)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
+  RewriteCond %{REQUEST_URI} ^/products/[^/]+$
+  RewriteRule ^products/([^/]+)$ /products/$1/ [R=301,L]
+
+  # Serve static HTML for product pages directly
+  # Product pages now have full HTML content - no JavaScript needed
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^/products/[^/]+/?$
+  RewriteRule ^products/([^/]+)/?$ /products/$1/index.html [L]
+
+  # No SPA fallback needed; all routes are now exported as static HTML
 </IfModule>
 
 # Security Headers
@@ -42,6 +50,23 @@
 
   # Referrer Policy
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Disable caching for SPA index.html only (NOT product pages)
+  <FilesMatch "^index\.html$">
+    # Only apply no-cache to root index.html, not product page index.html files
+    <If "%{REQUEST_URI} == '/index.html' || %{REQUEST_URI} == '/'">
+      Header set Cache-Control "no-cache, no-store, must-revalidate"
+      Header set Pragma "no-cache"
+      Header set Expires "0"
+    </If>
+  </FilesMatch>
+
+  # Cache static product pages for better performance
+  <FilesMatch "^index\.html$">
+    <If "%{REQUEST_URI} =~ m#^/products/[^/]+/index\.html$#">
+      Header set Cache-Control "public, max-age=3600"
+    </If>
+  </FilesMatch>
 </IfModule>
 
 # Compression
@@ -65,8 +90,8 @@
   ExpiresByType text/javascript "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
 
-  # HTML (cache for 1 hour for dynamic content)
-  ExpiresByType text/html "access plus 1 hour"
+  # HTML - Do NOT cache index.html (SPA entry point must always be fresh)
+  # ExpiresByType text/html "access plus 1 hour"
 
   # Fonts
   ExpiresByType font/woff2 "access plus 1 year"

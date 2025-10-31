@@ -1,7 +1,11 @@
 
 import React from 'react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (path: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-gray-800 text-white mt-16">
       <div className="container mx-auto px-4 py-8">
@@ -18,10 +22,26 @@ const Footer: React.FC = () => {
           <p className="mt-2">
             © {new Date().getFullYear()} Top 10 Resveratrol. All rights reserved.
           </p>
-          <div className="mt-4 flex justify-center space-x-4">
-            <a href="#privacy" className="hover:text-white">Privacy Policy</a>
-            <a href="#terms" className="hover:text-white">Terms of Service</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
+          <div className="mt-4 flex flex-wrap justify-center gap-4">
+            <button onClick={() => onNavigate('/about')} className="hover:text-white transition-colors">
+              About Us
+            </button>
+            <span className="text-gray-600">|</span>
+            <button onClick={() => onNavigate('/privacy-policy')} className="hover:text-white transition-colors">
+              Privacy Policy
+            </button>
+            <span className="text-gray-600">|</span>
+            <button onClick={() => onNavigate('/terms-of-service')} className="hover:text-white transition-colors">
+              Terms of Service
+            </button>
+            <span className="text-gray-600">|</span>
+            <button onClick={() => onNavigate('/disclaimer')} className="hover:text-white transition-colors">
+              Disclaimer
+            </button>
+            <span className="text-gray-600">|</span>
+            <button onClick={() => onNavigate('/affiliate-disclosure')} className="hover:text-white transition-colors">
+              Affiliate Disclosure
+            </button>
           </div>
         </div>
       </div>

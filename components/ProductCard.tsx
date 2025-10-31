@@ -59,6 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate }) => {
             loading="lazy"
             width="192"
             height="192"
+            sizes="(max-width: 768px) 100vw, 192px"
           />
         </div>
         <div className="md:w-2/3 p-6 flex flex-col">
@@ -111,7 +112,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onNavigate }) => {
           <div className="mt-6 space-y-3">
             {onNavigate && (
               <button
-                onClick={() => onNavigate(`/products/${product.slug}`)}
+                onClick={() => onNavigate(`/products/${product.slug}/`)}
                 className="block w-full text-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105"
               >
                 View Full Review →

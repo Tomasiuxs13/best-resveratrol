@@ -50,6 +50,10 @@ export const generateBreadcrumbSchema = (items: Array<{name: string; url: string
 
 export const getCanonicalUrl = (path: string): string => {
   const baseUrl = "https://bestresveratrol.com";
+  // Enforce trailing slash for product detail pages
+  if (/^\/products\//.test(path) && !path.endsWith('/')) {
+    return `${baseUrl}${path}/`;
+  }
   return `${baseUrl}${path}`;
 };
 
@@ -57,7 +61,7 @@ export const generateProductBreadcrumb = (productName: string, productSlug: stri
   return generateBreadcrumbSchema([
     { name: "Home", url: "https://bestresveratrol.com/" },
     { name: "Products", url: "https://bestresveratrol.com/" },
-    { name: productName, url: `https://bestresveratrol.com/products/${productSlug}` }
+    { name: productName, url: `https://bestresveratrol.com/products/${productSlug}/` }
   ]);
 };
 

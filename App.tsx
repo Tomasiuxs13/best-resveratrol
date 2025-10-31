@@ -71,7 +71,7 @@ const getPageFromPath = (path: string): { page: Page; slug?: string } => {
     const guideMatch = path.match(/^\/guides\/(.+)$/);
     if (guideMatch) return { page: 'GUIDE_DETAIL', slug: guideMatch[1] };
 
-    const productMatch = path.match(/^\/products\/(.+)$/);
+    const productMatch = path.match(/^\/products\/([^\/]+)\/?$/);
     if (productMatch) return { page: 'PRODUCT_DETAIL', slug: productMatch[1] };
 
     return { page: 'HOME' }; // Fallback to home
