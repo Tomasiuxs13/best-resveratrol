@@ -135,6 +135,13 @@ function generateStaticHTML({ title, description, canonical, content, structured
       .table th { padding:.75rem 1.5rem; text-transform:uppercase; font-size:.75rem; color:#374151; background:#f3f4f6; }
       .table td, .table th { border-bottom:1px solid #e5e7eb; }
       .table .zebra:nth-child(even) { background:#f9fafb; }
+      .card-grid { display:grid; grid-template-columns:1fr; gap:1.25rem; }
+      @media (min-width: 768px) { .card-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+      .post-card { background:#fff; border:1px solid #e5e7eb; border-radius:0.75rem; padding:1.25rem; box-shadow:0 4px 6px -1px rgba(0,0,0,.1); display:flex; flex-direction:column; }
+      .post-title { font-size:1.125rem; font-weight:800; color:#111827; margin-bottom:.25rem; }
+      .post-meta { font-size:.75rem; color:#6b7280; margin-bottom:.5rem; }
+      .post-excerpt { color:#4b5563; margin-bottom:1rem; }
+      .btn-link { color:#7c3aed; font-weight:700; text-decoration:none; }
     </style>
     ${structuredData ? `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>` : ''}
 </head>
@@ -547,22 +554,26 @@ function generateHomePage() {
       </div>
     </section>`;
 
-  const comparisonRows = products.slice(0, 5).map((p, i) => `
-    <tr class="border-b ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}">
-      <td class="px-6 py-4 font-bold text-lg text-gray-900">${p.rank}</td>
-      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-        <div class="flex items-center">
-          <img src="${p.image}" alt="${p.brand} ${p.name}" class="w-10 h-10 rounded-full object-contain mr-4" loading="lazy" width="40" height="40" />
+  const comparisonRows = products.slice(0, 6).map((p, i) => `
+    <tr class="zebra">
+      <td style="padding:.75rem 1rem; font-weight:800; color:#111827;">${p.rank}</td>
+      <td style="padding:.75rem 1rem;">
+        <div style="display:flex; align-items:center; gap:.75rem;">
+          <img src="${p.image}" alt="${p.brand} ${p.name}" style="width:36px; height:36px; border-radius:9999px; object-fit:contain;" loading="lazy" width="36" height="36" />
           <div>
-            <div>${p.brand}</div>
-            <div class="text-xs text-gray-500">${p.name}</div>
+            <div style="font-weight:600; color:#111827;">${p.brand}</div>
+            <div style="font-size:.75rem; color:#6b7280;">${p.name}</div>
           </div>
         </div>
-      </th>
-      <td class="px-6 py-4"><div class="flex items-center justify-center">★ ${(p.rating || 0).toFixed(1)}</div></td>
-      <td class="px-6 py-4">${p.potency}</td>
-      <td class="px-6 py-4">${p.bestFor}</td>
-      <td class="px-6 py-4 text-right"><a href="/products/${p.slug}/" class="font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md px-4 py-2">View</a></td>
+      </td>
+      <td style="padding:.75rem 1rem; text-align:center;">
+        <span class="badge" style="background:#f3e8ff; color:#5b21b6;">${(p.rating || 0).toFixed(1)}★</span>
+      </td>
+      <td style="padding:.75rem 1rem; white-space:nowrap;">${p.potency}</td>
+      <td style="padding:.75rem 1rem;">${p.bestFor}</td>
+      <td style="padding:.75rem 1rem; text-align:right;">
+        <a href="/products/${p.slug}/" class="btn btn-primary" style="padding:.5rem .9rem; border-radius:.5rem;">View</a>
+      </td>
     </tr>
   `).join('');
 
@@ -642,12 +653,18 @@ function generateFAQPage() {
 }
 
 function generateGuidesIndexPage() {
-  const inner = guides.map(g => `
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-gray-900 mb-1"><a href="/guides/${g.slug}/">${g.title}</a></h3>
-      <p class="text-gray-600">${g.summary}</p>
-    </div>
-  `).join('');
+  const inner = `
+    <div class="card-grid">
+      ${guides.map(g => `
+        <article class="post-card">
+          <h3 class="post-title"><a href="/guides/${g.slug}/" class="btn-link">${g.title}</a></h3>
+          <p class="post-excerpt">${g.summary}</p>
+          <div style="margin-top:auto; display:flex; justify-content:flex-end;">
+            <a href="/guides/${g.slug}/" class="btn btn-primary" style="padding:.6rem 1rem;">Read Guide</a>
+          </div>
+        </article>
+      `).join('')}
+    </div>`;
   const content = `
     <div class="container" style="padding: 2rem 1rem;">
       ${section('Guides', inner)}
@@ -674,13 +691,19 @@ function generateGuidePage(guide) {
 }
 
 function generateBlogIndexPage() {
-  const inner = blogPosts.map(p => `
-    <div class="mb-6">
-      <h3 class="text-xl font-bold text-gray-900 mb-1"><a href="/blog/${p.slug}/">${p.title}</a></h3>
-      <div class="text-sm text-gray-500 mb-1">${p.author} • ${p.date}</div>
-      <p class="text-gray-600">${p.summary}</p>
-    </div>
-  `).join('');
+  const inner = `
+    <div class="card-grid">
+      ${blogPosts.map(p => `
+        <article class="post-card">
+          <h3 class="post-title"><a href="/blog/${p.slug}/" class="btn-link">${p.title}</a></h3>
+          <div class="post-meta">${p.author} • ${p.date}</div>
+          <p class="post-excerpt">${p.summary}</p>
+          <div style="margin-top:auto; display:flex; justify-content:flex-end;">
+            <a href="/blog/${p.slug}/" class="btn btn-primary" style="padding:.6rem 1rem;">Read Article</a>
+          </div>
+        </article>
+      `).join('')}
+    </div>`;
   const content = `
     <div class="container" style="padding: 2rem 1rem;">
       ${section('Resveratrol Research & Insights Blog', inner)}
