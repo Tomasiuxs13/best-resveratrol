@@ -47,7 +47,7 @@ function generateStaticHTML({ title, description, canonical, content, structured
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f9fafb; color: #111827; line-height: 1.6; }
-      .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+      .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
       .bg-white { background-color: white; }
       .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
       .rounded-xl { border-radius: 0.75rem; }
