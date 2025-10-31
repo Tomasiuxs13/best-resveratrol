@@ -4,8 +4,8 @@
   AddType application/javascript .js .mjs
 </IfModule>
 
-# Serve the built static site from /dist by default
-DirectoryIndex dist/index.html index.html
+# Serve default index.html (document root will be set to /dist on server)
+DirectoryIndex index.html
 
 # Enable Rewrite Engine
 <IfModule mod_rewrite.c>
@@ -16,23 +16,17 @@ DirectoryIndex dist/index.html index.html
   # RewriteCond %{HTTPS} off
   # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # IMPORTANT: Map root requests to dist/ so we can keep repo clean and serve built site
-  # 1) Force homepage to dist/index.html explicitly
-  RewriteRule ^$ dist/index.html [L]
-
-  # 2) Enforce trailing slash for product pages (canonicalization)
+  # Enforce trailing slash for product pages (canonicalization)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} ^/products/[^/]+$
   RewriteRule ^products/([^/]+)$ /products/$1/ [R=301,L]
 
-  # 3) Map all non-dist requests to /dist preserving the path
-  RewriteCond %{REQUEST_URI} !^/dist/
-  RewriteRule ^(.*)$ dist/$1 [L]
-
-  # Note: With DirectoryIndex and mapping above, /products/<slug>/ resolves to /dist/products/<slug>/index.html
-
-  # No SPA fallback needed; all routes are now exported as static HTML in /dist
+  # Serve static HTML for product pages directly
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^/products/[^/]+/?$
+  RewriteRule ^products/([^/]+)/?$ /products/$1/index.html [L]
 </IfModule>
 
 # Security Headers
