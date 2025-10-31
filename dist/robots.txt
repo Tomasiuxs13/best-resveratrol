@@ -1,0 +1,30 @@
+# robots.txt for Top 10 Resveratrol Supplements
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow crawling of any future admin or private areas
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://bestresveratrol.com/sitemap.xml
+
+# Crawl-delay to be respectful of server resources (optional)
+Crawl-delay: 1
+
+# Allow specific important pages (redundant but explicit)
+Allow: /products/
+Allow: /guides/
+Allow: /blog/
+Allow: /what-is-resveratrol
+Allow: /faq
+Allow: /about
+
+# Block access to source maps and config files if accidentally exposed
+Disallow: /*.map$
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /*.config.js$
+Disallow: /*.config.ts$
