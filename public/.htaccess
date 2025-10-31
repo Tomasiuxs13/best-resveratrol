@@ -13,13 +13,17 @@
   # RewriteCond %{HTTPS} off
   # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # IMPORTANT: Never redirect static assets
-  RewriteRule ^assets/ - [L]
-  RewriteRule ^favicon\. - [L]
-  RewriteRule ^og-image\. - [L]
-  RewriteRule ^apple-touch-icon\. - [L]
-  RewriteRule ^robots\.txt$ - [L]
-  RewriteRule ^sitemap\.xml$ - [L]
+  # IMPORTANT: Map root requests to dist/ so we can keep repo clean and serve built site
+  # Serve home
+  RewriteRule ^$ /dist/index.html [L]
+
+  # Static assets and root files
+  RewriteRule ^assets/(.*)$ /dist/assets/$1 [L]
+  RewriteRule ^favicon\.png$ /dist/favicon.png [L]
+  RewriteRule ^apple-touch-icon\.png$ /dist/apple-touch-icon.png [L]
+  RewriteRule ^og-image\.png$ /dist/og-image.png [L]
+  RewriteRule ^robots\.txt$ /dist/robots.txt [L]
+  RewriteRule ^sitemap\.xml$ /dist/sitemap.xml [L]
 
   # Enforce trailing slash for product pages (SEO canonicalization)
   RewriteCond %{REQUEST_FILENAME} !-f
@@ -27,14 +31,28 @@
   RewriteCond %{REQUEST_URI} ^/products/[^/]+$
   RewriteRule ^products/([^/]+)$ /products/$1/ [R=301,L]
 
-  # Serve static HTML for product pages directly
-  # Product pages now have full HTML content - no JavaScript needed
+  # Serve static HTML routed into dist/ for product pages
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} ^/products/[^/]+/?$
-  RewriteRule ^products/([^/]+)/?$ /products/$1/index.html [L]
+  RewriteRule ^products/([^/]+)/?$ /dist/products/$1/index.html [L]
 
-  # No SPA fallback needed; all routes are now exported as static HTML
+  # Guides index and detail
+  RewriteRule ^guides/?$ /dist/guides/index.html [L]
+  RewriteRule ^guides/([^/]+)/?$ /dist/guides/$1/index.html [L]
+
+  # Blog index and posts
+  RewriteRule ^blog/?$ /dist/blog/index.html [L]
+  RewriteRule ^blog/([^/]+)/?$ /dist/blog/$1/index.html [L]
+
+  # FAQ and legal pages
+  RewriteRule ^faq/?$ /dist/faq/index.html [L]
+  RewriteRule ^privacy-policy/?$ /dist/privacy-policy/index.html [L]
+  RewriteRule ^terms-of-service/?$ /dist/terms-of-service/index.html [L]
+  RewriteRule ^disclaimer/?$ /dist/disclaimer/index.html [L]
+  RewriteRule ^affiliate-disclosure/?$ /dist/affiliate-disclosure/index.html [L]
+
+  # No SPA fallback needed; all routes are now exported as static HTML in /dist
 </IfModule>
 
 # Security Headers
