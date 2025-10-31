@@ -142,6 +142,10 @@ function generateStaticHTML({ title, description, canonical, content, structured
       .post-meta { font-size:.75rem; color:#6b7280; margin-bottom:.5rem; }
       .post-excerpt { color:#4b5563; margin-bottom:1rem; }
       .btn-link { color:#7c3aed; font-weight:700; text-decoration:none; }
+      .two-col { display:grid; grid-template-columns:1fr; gap:1rem; }
+      @media (min-width: 768px) { .two-col { grid-template-columns: 1fr 1fr; } }
+      .footer { margin-top:3rem; padding:2rem 0; color:#6b7280; font-size:.875rem; border-top:1px solid #e5e7eb; background:#ffffff; }
+      .footer a { color:#7c3aed; text-decoration:none; font-weight:600; }
     </style>
     ${structuredData ? `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>` : ''}
 </head>
@@ -235,6 +239,17 @@ function generateStaticHTML({ title, description, canonical, content, structured
       </div>
     </header>
     ${content}
+    <footer class="footer">
+      <div class="container" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between;">
+        <div>© ${new Date().getFullYear()} Top 10 Resveratrol</div>
+        <div style="display:flex; gap:1rem;">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms</a>
+          <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+          <a href="/disclaimer">Disclaimer</a>
+        </div>
+      </div>
+    </footer>
     <script>
       (function(){
         var btn = document.getElementById('mobileMenuBtn');
@@ -615,14 +630,14 @@ function generateHomePage() {
               <div style="text-transform:uppercase; letter-spacing:.05em; font-size:0.875rem; color:#2563eb; font-weight:600;">${p.bestFor}</div>
               <h3 style="margin-top:0.25rem; font-size:1.5rem; line-height:2rem; font-weight:800; color:#111827;">${p.brand} - ${p.name}</h3>
               <p style="margin-top:0.5rem; color:#4b5563;">${p.summary}</p>
-              <div style="display:grid; grid-template-columns:1fr; gap:1rem; margin-top:1rem;">
-                <div>
+              <div class="two-col" style="margin-top:1rem;">
+                <div class="card" style="padding:1rem;">
                   <div style="font-weight:700; color:#16a34a; margin-bottom:.25rem;">Pros</div>
                   <ul style="list-style:none; padding:0; margin:0;">
                     ${(p.pros||[]).slice(0,3).map(pr => `<li style=\"display:flex; align-items:flex-start; gap:.5rem; color:#374151;\"><span style=\"color:#16a34a; font-weight:700;\">+</span><span>${pr}</span></li>`).join('')}
                   </ul>
                 </div>
-                <div>
+                <div class="card" style="padding:1rem;">
                   <div style="font-weight:700; color:#dc2626; margin-bottom:.25rem;">Cons</div>
                   <ul style="list-style:none; padding:0; margin:0;">
                     ${(p.cons||[]).slice(0,2).map(co => `<li style=\"display:flex; align-items:flex-start; gap:.5rem; color:#374151;\"><span style=\"color:#dc2626; font-weight:700;\">-</span><span>${co}</span></li>`).join('')}
